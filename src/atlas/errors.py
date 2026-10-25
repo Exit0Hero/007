@@ -51,3 +51,7 @@ class ModelProviderError(AtlasError):
 
 class CitationValidationError(AtlasError):
     """A citation did not resolve to a registered source."""
+
+
+class DatasetError(AtlasError):
+    """An evaluation dataset is missing, malformed, or empty (US-801)."""

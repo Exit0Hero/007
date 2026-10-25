@@ -64,6 +64,15 @@ One sprint is executed at a time. Each sprint has a goal, explicit story scope, 
 **Goal:** add only approved post-MVP features.
 **Possible stories:** US-701 through US-705.
 **Gate:** Sprint 6 must pass and user must explicitly approve the chosen scope.
+**Delivered:** US-703 (research depth, ADR-017) and US-706 (provider portability — Exa provider + OpenAI-compatible base URL, ADR-018); other stories declined with reasons.
+
+## Sprint 8 — Research quality evaluation
+
+**Goal:** measure whether Atlas produces accurate, relevant, complete, properly cited reports — honestly, without inventing numbers.
+**Stories:** US-801 (dataset), US-802 (deterministic checks), US-803 (citation support levels), US-804 (human review workflow), US-805 (opt-in live runner), US-806 (metrics), US-807 (regression tests), US-808 (documentation).
+**Gate:** Sprint 7 passes; user brief supplied 2026-10-25 and approved a 3-case live smoke run.
+**Verification:** acceptance criteria in `docs/ROADMAP.md` (written before implementation); full offline suite and quality gates green; live smoke recorded only if actually executed.
+**Delivered:** 24-case dataset (`evaluation_dataset/cases.json`, 8 categories, 3 cases each), eight deterministic checks + three-level citation verdicts (`src/atlas/quality.py`), artifacts and review workflow (`src/atlas/evalreport.py`), metrics with explicit denominators (`src/atlas/evalmetrics.py`), opt-in live runner (`src/atlas/evallive.py`), CLI (`python -m atlas.evalrun`), 86 new tests, docs rewritten. Offline baseline (24 cases, 0 quality failures) and the approved 3-case live smoke are recorded in `docs/EVALUATION.md`; ADR-019 documents the design.
 
 ## Sprint reporting template
 

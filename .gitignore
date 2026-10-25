@@ -27,6 +27,11 @@ outputs/
 reports/
 live_report.md
 
+# Evaluation artifacts — only the recorded baselines are versioned
+evaluation_results/*
+!evaluation_results/offline_baseline/
+!evaluation_results/live_smoke/
+
 # Editors and OS
 .idea/
 .vscode/

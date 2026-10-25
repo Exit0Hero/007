@@ -174,6 +174,77 @@ one marked-`live` test exercising a real Exa call and a real end-to-end run
 
 Verification approach for US-701 through US-705 is intentionally not specified. These stories have no sprint assignment and must gain acceptance criteria and a verification approach before they are scheduled.
 
+## Sprint 8 — Research quality evaluation (US-801 … US-808)
+
+**Context:** Sprints 0–7b verified structure, bounds, and honesty; *answer
+quality* remains unmeasured (the open gap recorded in `docs/STATUS.md`).
+Recorded as ADR-019.
+
+### US-801 — Evaluation dataset
+
+1. At least 20 cases live in a version-controlled dataset outside `src/` (fixtures separate from application code).
+2. Every case carries: stable ID, question, category (all 8 required categories represented), difficulty, expected research characteristics, required/prohibited claims where applicable, expected source characteristics, and a judging rubric.
+3. Time-sensitive cases are flagged with a reference date or evaluation instruction; volatile facts are never hardcoded as permanent ground truth.
+4. The dataset is schema-validated; an empty or malformed dataset is rejected with a clear error.
+
+**Verification:** loader tests over valid, empty, malformed, duplicate-ID, and missing-field datasets; a test asserting ≥20 cases, all categories present, and every field populated.
+
+### US-802 — Deterministic quality checks
+
+1. An offline runner measures: required report structure; citation resolution against the run-local registry; cited-ID existence; excerpt support against stored evidence; disclosure of missing evidence/limitations; incomplete research mislabelled complete; case-specific required conditions; rejection of fabricated citations.
+2. The runner requires no credentials and performs no network access.
+3. Business rules (citation resolution, excerpt matching, status honesty) are reused from `SourceRegistry`, `ReportBuilder`, and `atlas.evaluation` — not reimplemented with divergent logic.
+4. Passing structural checks is never reported as factual accuracy.
+
+**Verification:** fixture-based tests for each of the 8 checks, including an offline assertion that the runner makes no external calls.
+
+### US-803 — Citation support evaluation
+
+1. Three distinct verdicts: citation *resolves*, excerpt *matches stored evidence*, and claim *is supported by the source*.
+2. The first two are deterministic; the third returns `unknown`/`needs_review` unless a human review is recorded — a resolvable URL never implies support.
+3. Where deterministic verification is impossible, the result is `unknown`, never `pass`.
+
+**Verification:** tests with resolving-but-unsupported citations asserted to produce `needs_review`, not `pass`.
+
+### US-804 — Human review workflow
+
+1. A machine-readable JSON result and a human-readable Markdown summary are generated per evaluation run.
+2. Each case records: ID, question, timestamp, model/search provider (names only), completion status, citation-resolution result, evidence-support result, factual-accuracy review status, completeness/relevance review status, failure reasons, and evaluation limitations.
+3. Statuses are drawn from `pass`/`fail`/`unknown`/`needs_review`; unreviewed claims are never represented as verified.
+4. A documented reviewer workflow exists for recording judgments.
+
+**Verification:** artifact-shape tests; a test proving fresh results carry `needs_review`/`unknown` for accuracy fields; docs section present.
+
+### US-805 — Live evaluation runner
+
+1. Live execution requires explicit opt-in (flag + configured providers) and refuses otherwise without contacting any provider.
+2. Existing `Settings` bounds (iterations, results, deadline) apply; no automatic retry of failed paid calls.
+3. No secret ever appears in logs, exceptions, artifacts, or the summary.
+4. Provider/network failures are recorded distinctly from research-quality failures; a case that completes without exceptions is not thereby "passed".
+5. A small subset/smoke selection is possible; ordinary offline tests never make live calls.
+
+**Verification:** offline tests for refusal paths, subset selection, secret redaction, and failure classification; the approved 3-case smoke run recorded honestly in `docs/EVALUATION.md`.
+
+### US-806 — Evaluation metrics
+
+1. Metrics reported: completion rate, citation resolution rate, excerpt verification rate, unsupported-claim rate (reviewed only), factual accuracy (reviewed only), completeness/relevance (where review data exists), provider failure rate, average/median token usage (only when supplied), cost (only with reliable pricing+usage data).
+2. Every metric shows numerator, denominator, and unknown/unreviewed count.
+3. A metric with no valid observations is `unavailable`, never `0`; no accuracy, cost, or quality figure is invented.
+
+**Verification:** metric tests with empty, partial, and fully-reviewed inputs, including `unavailable`-when-no-observations cases.
+
+### US-807 — Regression protection
+
+Deterministic tests cover: valid reports; missing citations; unknown source IDs; incorrect excerpts; partial-marked-complete; empty/malformed datasets; unknown review statuses; provider failures; missing token usage; secret redaction; offline-no-network; live-refusal-without-opt-in.
+
+**Verification:** dedicated test files using fakes/fixtures only; no live dependency in ordinary runs.
+
+### US-808 — Documentation
+
+`docs/EVALUATION.md` (and `docs/STATUS.md`) document: how to run offline evaluation; how to select a live subset; how to review accuracy and citation support; how to interpret every metric; what the evaluator cannot establish; how to reproduce results; how to avoid secret exposure and unintended API cost. Existing ADRs are preserved; any change is recorded in `docs/DECISIONS.md`.
+
+**Verification:** docs review against this checklist; STATUS updated with actual, executed results only.
+
 ## Backlog management rules
 
 - Add a stable story ID before implementation.

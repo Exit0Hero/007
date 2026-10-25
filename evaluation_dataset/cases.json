@@ -1,0 +1,1508 @@
+{
+  "dataset_version": "1.0.0",
+  "created": "2026-10-25",
+  "cases": [
+    {
+      "id": "EV-GEN-001",
+      "question": "What is the boiling point of water at sea level in degrees Celsius?",
+      "category": "general_factual",
+      "difficulty": "easy",
+      "time_sensitive": false,
+      "expected_research": [
+        "at least one source states the boiling point under standard pressure",
+        "the answer names the pressure condition rather than an unqualified number"
+      ],
+      "required_claims": ["100 degrees Celsius"],
+      "prohibited_claims": ["boils at a different temperature at sea level"],
+      "expected_sources": [
+        "a reference or educational source describing phase change at standard pressure"
+      ],
+      "rubric": [
+        {
+          "id": "accurate",
+          "question": "Is the reported boiling point correct at standard pressure?",
+          "guidance": "100 °C at 1 atm; lower values must be attributed to higher altitude."
+        },
+        {
+          "id": "conditioned",
+          "question": "Is the value qualified by its pressure condition?",
+          "guidance": "An unqualified number is incomplete even when correct."
+        },
+        {
+          "id": "cited",
+          "question": "Is the claim backed by a resolvable citation?",
+          "guidance": "The citation must resolve to a registered source in the run."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1,
+        "must_disclose_limitations": false
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Boiling point of water - phase change reference",
+            "url": "https://example.org/reference/boiling-point",
+            "snippet": "At standard atmospheric pressure of 101.325 kPa, water boils at 100 degrees Celsius."
+          },
+          {
+            "title": "Effect of altitude on boiling",
+            "url": "https://example.org/reference/altitude-boiling",
+            "snippet": "Boiling point decreases by roughly 1 degree Celsius for every 300 metres of elevation."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "boiling point of water at sea level" } }
+            ]
+          },
+          {
+            "text": "At standard atmospheric pressure, water boils at 100 degrees Celsius; the boiling point falls as altitude increases."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-GEN-002",
+      "question": "Who wrote the novel Pride and Prejudice and when was it published?",
+      "category": "general_factual",
+      "difficulty": "easy",
+      "time_sensitive": false,
+      "expected_research": [
+        "a bibliographic source names the author and publication year",
+        "the answer distinguishes the novel from its adaptations"
+      ],
+      "required_claims": ["Jane Austen"],
+      "prohibited_claims": ["written by Charlotte Bronte"],
+      "expected_sources": ["a literary reference or publisher catalogue entry"],
+      "rubric": [
+        {
+          "id": "author",
+          "question": "Is the author named correctly?",
+          "guidance": "Jane Austen; the novel was published in 1813."
+        },
+        {
+          "id": "year",
+          "question": "Is the publication year correct?",
+          "guidance": "1813. Accept equivalent phrasing."
+        },
+        {
+          "id": "no-confusion",
+          "question": "Does the answer avoid confusing the novel with adaptations?",
+          "guidance": "Film or television versions must not be credited as the work."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Pride and Prejudice - bibliographic record",
+            "url": "https://example.org/library/pride-and-prejudice",
+            "snippet": "Pride and Prejudice is a novel by Jane Austen, published in 1813 by T. Egerton."
+          },
+          {
+            "title": "Jane Austen - works overview",
+            "url": "https://example.org/library/jane-austen",
+            "snippet": "Austen published six major novels, including Sense and Sensibility and Pride and Prejudice."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Pride and Prejudice author publication year" } }
+            ]
+          },
+          {
+            "text": "Pride and Prejudice was written by Jane Austen and published in 1813."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-GEN-003",
+      "question": "What is the current population of Canada?",
+      "category": "general_factual",
+      "difficulty": "medium",
+      "time_sensitive": true,
+      "reference_date": "2026-10-25",
+      "evaluation_instruction": "Population figures change with every release. Judge whether the answer attributes a figure to a dated statistical source (for example a Statistics Canada census or estimate), not whether a specific number still equals today's value. A stale but attributed figure with its reference date is acceptable; an undated, unsourced number is not.",
+      "expected_research": [
+        "the figure is attributed to a national statistical agency",
+        "the answer states when the figure was measured"
+      ],
+      "required_claims": ["Statistics Canada"],
+      "prohibited_claims": ["the population has never changed"],
+      "expected_sources": ["an official national statistics agency page"],
+      "rubric": [
+        {
+          "id": "attributed",
+          "question": "Is the figure attributed to an official statistical source?",
+          "guidance": "Statistics Canada or an equivalent census body."
+        },
+        {
+          "id": "dated",
+          "question": "Is a reference date or reference period given?",
+          "guidance": "An undated figure cannot be evaluated against the reference date."
+        },
+        {
+          "id": "hedged",
+          "question": "Does the answer acknowledge that the value changes over time?",
+          "guidance": "A population figure presented as permanently fixed is misleading."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Population estimates - national statistics",
+            "url": "https://example.gov/statistics/population-estimates",
+            "snippet": "Quarterly population estimates are published by Statistics Canada, with the most recent estimate dated July 2026."
+          },
+          {
+            "title": "Census profile - reference period",
+            "url": "https://example.gov/statistics/census-profile",
+            "snippet": "The census profile reports counts as of census day and is revised with each new release."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Canada current population Statistics Canada" } }
+            ]
+          },
+          {
+            "text": "Statistics Canada publishes population estimates quarterly; the most recent figure carries its own reference date, so check the latest release for the current value rather than treating any single number as permanent."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-SCI-001",
+      "question": "What does the James Webb Space Telescope observe, and why is that wavelength range useful?",
+      "category": "science_technology",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "the instrument's wavelength range is stated",
+        "the answer connects the range to a scientific advantage such as dust penetration or redshift"
+      ],
+      "required_claims": ["infrared"],
+      "prohibited_claims": ["observes only in visible light"],
+      "expected_sources": ["an official mission page or peer-reviewed summary"],
+      "rubric": [
+        {
+          "id": "wavelength",
+          "question": "Is the infrared range described correctly?",
+          "guidance": "JWST observes roughly 0.6 to 28.5 micrometres, primarily infrared."
+        },
+        {
+          "id": "advantage",
+          "question": "Is a scientific advantage of that range explained?",
+          "guidance": "Dust penetration or redshifted light from the early universe."
+        },
+        {
+          "id": "cited",
+          "question": "Are the claims supported by resolvable citations?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Webb telescope - mission overview",
+            "url": "https://example.org/space/webb-overview",
+            "snippet": "The James Webb Space Telescope observes in infrared light from about 0.6 to 28.5 micrometres, letting it see through dust clouds."
+          },
+          {
+            "title": "Why infrared astronomy matters",
+            "url": "https://example.org/space/infrared-astronomy",
+            "snippet": "Infrared observations reveal star-forming regions hidden by dust and capture light redshifted from distant galaxies."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "James Webb Space Telescope wavelength range" } }
+            ]
+          },
+          {
+            "text": "The James Webb Space Telescope observes the universe primarily in infrared light, which lets it peer through dust and study light redshifted from distant galaxies."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-SCI-002",
+      "question": "How do mRNA vaccines trigger an immune response?",
+      "category": "science_technology",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "the mechanism is described from delivery to immune recognition",
+        "the answer avoids claims about long-term effects that the sources do not support"
+      ],
+      "required_claims": ["spike protein"],
+      "prohibited_claims": ["alters human DNA"],
+      "expected_sources": ["a public-health body or peer-reviewed explainer"],
+      "rubric": [
+        {
+          "id": "mechanism",
+          "question": "Is the mechanism described accurately?",
+          "guidance": "mRNA instructs cells to build the viral spike protein, which prompts an immune response."
+        },
+        {
+          "id": "no-overclaim",
+          "question": "Does the answer avoid unsupported safety claims?",
+          "guidance": "Claims that mRNA changes DNA are incorrect."
+        },
+        {
+          "id": "cited",
+          "question": "Is each step backed by a resolvable citation?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "How mRNA vaccines work - health explainer",
+            "url": "https://example.org/health/mrna-explainer",
+            "snippet": "mRNA vaccines teach cells to make the spike protein, after which the immune system develops a response to it."
+          },
+          {
+            "title": "Vaccine platforms compared",
+            "url": "https://example.org/health/vaccine-platforms",
+            "snippet": "Unlike live vaccines, mRNA formulations carry instructions rather than a weakened pathogen."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "how mRNA vaccines trigger immune response" } }
+            ]
+          },
+          {
+            "text": "mRNA vaccines instruct cells to produce the viral spike protein, which the immune system then recognises and responds to."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-SCI-003",
+      "question": "Why does the sky appear blue during the day?",
+      "category": "science_technology",
+      "difficulty": "easy",
+      "time_sensitive": false,
+      "expected_research": [
+        "the answer names the scattering mechanism",
+        "the answer explains why blue is scattered more than red"
+      ],
+      "required_claims": ["Rayleigh scattering"],
+      "prohibited_claims": ["the sky reflects the ocean"],
+      "expected_sources": ["an educational physics source"],
+      "rubric": [
+        {
+          "id": "mechanism",
+          "question": "Is the correct scattering mechanism named?",
+          "guidance": "Rayleigh scattering by air molecules, not reflection."
+        },
+        {
+          "id": "wavelength",
+          "question": "Is the wavelength dependence explained?",
+          "guidance": "Shorter wavelengths scatter far more strongly than longer ones."
+        },
+        {
+          "id": "cited",
+          "question": "Is the explanation supported by resolvable citations?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Rayleigh scattering and sky colour",
+            "url": "https://example.org/physics/rayleigh-scattering",
+            "snippet": "Sunlight scatters off air molecules with an intensity inversely proportional to the fourth power of wavelength, so blue light scatters most."
+          },
+          {
+            "title": "Why sunsets are red",
+            "url": "https://example.org/physics/sunset-colour",
+            "snippet": "At low sun angles the blue light is scattered away, leaving the longer red wavelengths to reach the observer."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "why is the sky blue Rayleigh scattering" } }
+            ]
+          },
+          {
+            "text": "The sky appears blue because shorter wavelengths of sunlight are scattered by air molecules, an effect known as Rayleigh scattering."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-PRG-001",
+      "question": "What is a list comprehension in Python and when should a plain loop be preferred?",
+      "category": "programming",
+      "difficulty": "easy",
+      "time_sensitive": false,
+      "expected_research": [
+        "the syntax and its list-producing result are described",
+        "the answer states a readability trade-off rather than a blanket rule"
+      ],
+      "required_claims": ["list comprehension"],
+      "prohibited_claims": ["comprehensions are always faster"],
+      "expected_sources": ["the official Python language documentation or a tutorial reference"],
+      "rubric": [
+        {
+          "id": "definition",
+          "question": "Is the construct defined correctly?",
+          "guidance": "It produces a list from an iterable, optionally with a condition."
+        },
+        {
+          "id": "trade-off",
+          "question": "Is a readability trade-off stated?",
+          "guidance": "Long or side-effecting logic reads better as an explicit loop."
+        },
+        {
+          "id": "no-overclaim",
+          "question": "Does the answer avoid an unconditional performance claim?",
+          "guidance": "Performance depends on the operation; readability is the usual reason."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Python data structures - list comprehensions",
+            "url": "https://docs.example.org/python/datastructures",
+            "snippet": "List comprehensions provide a concise way to create lists: each element is the result of an expression, optionally filtered by a condition."
+          },
+          {
+            "title": "PEP 202 - list comprehensions",
+            "url": "https://peps.example.org/pep-202",
+            "snippet": "List comprehensions were added so that a common loop pattern could be expressed in a single expression."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python list comprehension vs loop" } }
+            ]
+          },
+          {
+            "text": "A Python list comprehension builds a new list by evaluating an expression for each item in an iterable, optionally filtered by a condition; a plain loop is easier to read when the body grows side effects or branches."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-PRG-002",
+      "question": "What is the difference between a thread and a process in Python?",
+      "category": "programming",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "memory sharing is contrasted between the two",
+        "the answer mentions the CPython global interpreter lock where relevant"
+      ],
+      "required_claims": ["share the same memory"],
+      "prohibited_claims": ["processes share memory by default"],
+      "expected_sources": ["official documentation or a concurrency reference"],
+      "rubric": [
+        {
+          "id": "contrast",
+          "question": "Is the memory model contrasted correctly?",
+          "guidance": "Threads share a process's memory; processes have separate address spaces."
+        },
+        {
+          "id": "gil",
+          "question": "Is the GIL mentioned when discussing CPython threads?",
+          "guidance": "It prevents multiple threads executing Python bytecode simultaneously."
+        },
+        {
+          "id": "cited",
+          "question": "Is the explanation backed by resolvable citations?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Thread-based parallelism - Python docs",
+            "url": "https://docs.example.org/python/threading",
+            "snippet": "Threads allow a program to advance multiple flows of control; they share the same memory and state of the process."
+          },
+          {
+            "title": "Multiprocessing - Python docs",
+            "url": "https://docs.example.org/python/multiprocessing",
+            "snippet": "The multiprocessing package spawns separate processes, each with its own interpreter and its own copy of the data."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python thread versus process differences" } }
+            ]
+          },
+          {
+            "text": "Threads share the same memory within a process while processes have separate memory; in CPython a global interpreter lock means threads take turns executing bytecode."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-PRG-003",
+      "question": "Explain in depth how garbage collection works in Python, including generational cycles.",
+      "category": "programming",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "multiple searches are attempted before an answer",
+        "the run hits its iteration bound rather than inventing a full answer"
+      ],
+      "required_claims": [],
+      "prohibited_claims": [],
+      "expected_sources": ["reference-counting and garbage-collector documentation"],
+      "rubric": [
+        {
+          "id": "honest-partial",
+          "question": "Is the run's partial state disclosed instead of presented as a complete survey?",
+          "guidance": "The report must not claim completeness when the loop hit its bound."
+        },
+        {
+          "id": "no-invention",
+          "question": "Does the report avoid claims unsupported by retrieved evidence?",
+          "guidance": "Only registered sources may be cited."
+        },
+        {
+          "id": "bounded",
+          "question": "Did the run respect its configured iteration bound?",
+          "guidance": "Tool calls must not exceed max_iterations."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["partial"],
+        "min_sources": 1,
+        "must_disclose_limitations": true
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Garbage collection - Python docs",
+            "url": "https://docs.example.org/python/gc",
+            "snippet": "The collector tracks objects reachable by reference cycles and reclaims them in generational passes."
+          },
+          {
+            "title": "Reference counting basics",
+            "url": "https://docs.example.org/python/refcount",
+            "snippet": "Every object counts references to it; the count is decremented when a reference is dropped."
+          },
+          {
+            "title": "gc module API",
+            "url": "https://docs.example.org/python/gc-module",
+            "snippet": "The gc module exposes thresholds, collection counts, and debugging helpers for the cyclic collector."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 1" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 2" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 3" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 4" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 5" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 6" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 7" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 8" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 9" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "python garbage collection generational cycles 10" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CMP-001",
+      "question": "Compare PostgreSQL and MySQL for a write-heavy workload.",
+      "category": "comparative",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "both systems are described before any recommendation",
+        "the recommendation is conditioned on workload characteristics"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["PostgreSQL is always faster"],
+      "expected_sources": ["documentation or benchmarks for both databases"],
+      "rubric": [
+        {
+          "id": "both-sides",
+          "question": "Are both systems characterised fairly?",
+          "guidance": "A comparison that only praises one system is incomplete."
+        },
+        {
+          "id": "conditioned",
+          "question": "Is any recommendation tied to workload specifics?",
+          "guidance": "Write-heavy behaviour depends on indexing, replication, and hardware."
+        },
+        {
+          "id": "no-absolutist",
+          "question": "Does the answer avoid an absolute performance claim?",
+          "guidance": "'Always faster' claims cannot be supported by a general source."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "PostgreSQL performance tips",
+            "url": "https://example.org/db/postgresql-performance",
+            "snippet": "PostgreSQL offers advanced indexing, table partitioning, and synchronous replication for write-heavy deployments."
+          },
+          {
+            "title": "MySQL write throughput guide",
+            "url": "https://example.org/db/mysql-writes",
+            "snippet": "MySQL with InnoDB scales writes well with appropriate buffering and batched transactions."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "PostgreSQL versus MySQL write heavy workload" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "InnoDB write throughput tuning" } }
+            ]
+          },
+          {
+            "text": "Both databases handle write-heavy loads well: PostgreSQL offers advanced indexing and partitioning, while MySQL with InnoDB scales writes through buffering and batching; the choice depends on indexing needs and operational preference."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CMP-002",
+      "question": "Compare React and Vue for a small team building an internal dashboard.",
+      "category": "comparative",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "ecosystem size and learning curve are both addressed",
+        "the trade-off is framed for the stated context rather than in general"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["React is objectively better"],
+      "expected_sources": ["framework documentation and a neutral comparison source"],
+      "rubric": [
+        {
+          "id": "context-fit",
+          "question": "Does the answer address the small-team dashboard context?",
+          "guidance": "A generic framework recap does not answer the question asked."
+        },
+        {
+          "id": "both-sides",
+          "question": "Are strengths of both frameworks stated?",
+          "guidance": "Ecosystem size and learning curve should both appear."
+        },
+        {
+          "id": "no-absolutist",
+          "question": "Does the answer avoid declaring a universal winner?",
+          "guidance": "Framework preference is context-dependent."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "React - getting started",
+            "url": "https://example.org/frontend/react-started",
+            "snippet": "React is a library for building user interfaces from components, with a large ecosystem of surrounding packages."
+          },
+          {
+            "title": "Vue - introduction",
+            "url": "https://example.org/frontend/vue-intro",
+            "snippet": "Vue is a progressive framework whose single-file components combine template, script, and style for newcomers."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "React versus Vue small team dashboard" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Vue single file components learning curve" } }
+            ]
+          },
+          {
+            "text": "For a small team dashboard both are viable: React has a larger ecosystem of packages, while Vue's single-file components tend to be gentler to pick up for a team that already knows HTML and CSS."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CMP-003",
+      "question": "Compare SQLite and PostgreSQL for an offline-capable desktop application.",
+      "category": "comparative",
+      "difficulty": "easy",
+      "time_sensitive": false,
+      "expected_research": [
+        "deployment models are contrasted (in-process versus client-server)",
+        "concurrency characteristics are mentioned"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["SQLite is a network database"],
+      "expected_sources": ["official documentation for both databases"],
+      "rubric": [
+        {
+          "id": "deployment",
+          "question": "Are the deployment models contrasted correctly?",
+          "guidance": "SQLite runs in-process with no server; PostgreSQL runs as a service."
+        },
+        {
+          "id": "concurrency",
+          "question": "Is concurrency addressed?",
+          "guidance": "SQLite writes lock the database; PostgreSQL supports concurrent writers."
+        },
+        {
+          "id": "fit",
+          "question": "Is a recommendation tied to the desktop context?",
+          "guidance": "Offline desktop use is SQLite's natural fit."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "SQLite - about",
+            "url": "https://example.org/db/sqlite-about",
+            "snippet": "SQLite is a C-language library that implements a self-contained, serverless, zero-configuration database engine."
+          },
+          {
+            "title": "PostgreSQL - architecture",
+            "url": "https://example.org/db/postgres-architecture",
+            "snippet": "PostgreSQL runs as a database server that client applications connect to over a network, supporting concurrent writers."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "SQLite versus PostgreSQL desktop application" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "PostgreSQL concurrent write behaviour" } }
+            ]
+          },
+          {
+            "text": "SQLite runs in-process with no server, which suits an offline desktop application, whereas PostgreSQL runs as a client-server service that supports concurrent writers but requires a running instance."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-MUL-001",
+      "question": "What are the main causes of the 2008 global financial crisis according to economists?",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "at least three distinct sources are consulted",
+        "several contributing causes are listed rather than a single one"
+      ],
+      "required_claims": ["mortgage"],
+      "prohibited_claims": ["explained by a single cause"],
+      "expected_sources": ["at least three independent analyses or institutional reports"],
+      "rubric": [
+        {
+          "id": "multiple-causes",
+          "question": "Are several contributing causes given?",
+          "guidance": "Subprime lending, housing prices, and securitisation are commonly cited together."
+        },
+        {
+          "id": "breadth",
+          "question": "Does the answer draw on more than one source?",
+          "guidance": "A single-source answer does not meet the multi-source intent."
+        },
+        {
+          "id": "cited",
+          "question": "Are the causes attributed to resolvable citations?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 3
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Crisis inquiry - findings",
+            "url": "https://example.org/econ/crisis-inquiry",
+            "snippet": "The inquiry found that risky mortgage lending, falling housing prices, and interconnected derivatives amplified the downturn."
+          },
+          {
+            "title": "Securitisation and the crisis",
+            "url": "https://example.org/econ/securitisation",
+            "snippet": "Mortgage-backed securities spread losses across institutions that had underwritten none of the underlying loans."
+          },
+          {
+            "title": "Central bank review - credit conditions",
+            "url": "https://example.org/econ/credit-conditions",
+            "snippet": "Loose credit conditions and inadequate capital buffers left institutions exposed when housing prices reversed."
+          },
+          {
+            "title": "Academic retrospective",
+            "url": "https://example.org/econ/retrospective",
+            "snippet": "Subsequent studies treat the crisis as a combination of supervision failures and market structure problems."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "causes of the 2008 financial crisis economists" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "mortgage backed securities role in crisis" } }
+            ]
+          },
+          {
+            "text": "Economists point to a combination of subprime mortgage lending, falling housing prices, and securitised derivatives that spread losses across the financial system; no single cause explains the crisis."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-MUL-002",
+      "question": "What does research say about the effect of remote work on productivity?",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "at least three sources with differing findings are consulted",
+        "conflicting results are reported rather than collapsed into one number"
+      ],
+      "required_claims": ["mixed"],
+      "prohibited_claims": ["remote work always increases productivity"],
+      "expected_sources": ["at least three studies or reviews with differing designs"],
+      "rubric": [
+        {
+          "id": "mixed-evidence",
+          "question": "Does the answer report that findings are mixed?",
+          "guidance": "Results differ by role, design, and measurement."
+        },
+        {
+          "id": "breadth",
+          "question": "Are at least three sources represented?",
+          "guidance": "Check the report's Sources section against the registry."
+        },
+        {
+          "id": "no-flattening",
+          "question": "Are differing findings preserved instead of averaged into one claim?",
+          "guidance": "Collapsing conflicting studies misrepresents the evidence."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 3
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Field experiment on hybrid work",
+            "url": "https://example.org/work/hybrid-experiment",
+            "snippet": "A randomized trial found hybrid schedules did not reduce performance ratings and slightly improved retention."
+          },
+          {
+            "title": "Collaboration network study",
+            "url": "https://example.org/work/collaboration-networks",
+            "snippet": "Fully remote teams showed fewer weak ties and slower information flow across groups."
+          },
+          {
+            "title": "Survey of knowledge workers",
+            "url": "https://example.org/work/remote-survey",
+            "snippet": "Self-reported productivity rose for focused tasks but fell where coordination was required."
+          },
+          {
+            "title": "Meta-analysis of telework outcomes",
+            "url": "https://example.org/work/meta-analysis",
+            "snippet": "Effect sizes varied widely across studies, depending on job type and how productivity was measured."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "remote work productivity research findings" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "hybrid work experiment productivity outcomes" } }
+            ]
+          },
+          {
+            "text": "Research gives mixed results: randomized hybrid trials report stable performance, while network studies report weaker cross-team ties; the direction of the effect depends on the job and on how productivity was measured."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-MUL-003",
+      "question": "What factors do economists cite as drivers of inflation?",
+      "category": "multi_source",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "at least three sources are consulted",
+        "demand-side and supply-side factors are both mentioned"
+      ],
+      "required_claims": ["supply"],
+      "prohibited_claims": ["one cause alone"],
+      "expected_sources": ["institutional or academic sources describing inflation drivers"],
+      "rubric": [
+        {
+          "id": "both-sides",
+          "question": "Are demand and supply factors both present?",
+          "guidance": "An answer covering only one side is incomplete."
+        },
+        {
+          "id": "breadth",
+          "question": "Are at least three sources represented?",
+          "guidance": "Check the report's Sources section against the registry."
+        },
+        {
+          "id": "cited",
+          "question": "Are the factors tied to resolvable citations?",
+          "guidance": "Citations must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 3
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Demand-pull inflation overview",
+            "url": "https://example.org/econ/demand-pull",
+            "snippet": "When aggregate demand grows faster than capacity, prices rise across sectors."
+          },
+          {
+            "title": "Cost-push dynamics",
+            "url": "https://example.org/econ/cost-push",
+            "snippet": "Energy and input cost shocks raise production expenses that firms pass on to buyers."
+          },
+          {
+            "title": "Expectations and anchoring",
+            "url": "https://example.org/econ/expectations",
+            "snippet": "When firms and workers expect higher prices, wage and price setting can reinforce the increase."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "drivers of inflation economics" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "supply shocks inflation expectations" } }
+            ]
+          },
+          {
+            "text": "Economists cite demand pressure, supply disruptions such as energy shocks, and the anchoring of inflation expectations; inflation rarely has only one cause."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-LIM-001",
+      "question": "What were the 2019 sales figures of the privately held software company Quietpdf?",
+      "category": "limited_evidence",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "the search returns no usable evidence",
+        "the answer states plainly that the figure could not be established"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["sold 1 million units"],
+      "expected_sources": ["none available in the fixture corpus"],
+      "rubric": [
+        {
+          "id": "admits-gap",
+          "question": "Does the answer state that no evidence was found?",
+          "guidance": "An explicit gap is the correct outcome, not a guessed number."
+        },
+        {
+          "id": "no-fabrication",
+          "question": "Is any specific figure withheld?",
+          "guidance": "A precise sales number with no registered source is fabricated."
+        },
+        {
+          "id": "disclosed",
+          "question": "Are limitations recorded in the report?",
+          "guidance": "A zero-source run must disclose its limitation."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed", "partial"],
+        "min_sources": 0,
+        "must_disclose_limitations": true
+      },
+      "fixture": {
+        "results": [],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Quietpdf 2019 sales revenue figures" } }
+            ]
+          },
+          {
+            "text": "No reliable public data was found for Quietpdf's 2019 sales figures, so this cannot be answered with the available evidence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-LIM-002",
+      "question": "What is the average lifespan of a ballpoint pen in normal use?",
+      "category": "limited_evidence",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "the answer acknowledges that no authoritative measurement exists",
+        "any range given is qualified by usage assumptions"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["lasts exactly two years"],
+      "expected_sources": ["at most one weak or anecdotal source"],
+      "rubric": [
+        {
+          "id": "ambiguity",
+          "question": "Does the answer flag the ambiguity of the question?",
+          "guidance": "Lifespan depends on usage frequency and storage."
+        },
+        {
+          "id": "no-precision",
+          "question": "Is an unjustifiably precise figure avoided?",
+          "guidance": "A single exact figure implies evidence that does not exist."
+        },
+        {
+          "id": "cited",
+          "question": "Is the answer grounded in whatever source exists?",
+          "guidance": "Any citation must resolve within the run's registry."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Ballpoint pen ink capacity discussion",
+            "url": "https://example.org/everyday/ballpoint-ink",
+            "snippet": "Writers estimate a standard ballpoint writes for roughly 10 to 20 kilometres of line, depending on pressure and paper."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "average ballpoint pen lifespan use" } }
+            ]
+          },
+          {
+            "text": "No authoritative measurement of ballpoint pen lifespan exists; sources only estimate line length written, so any figure must be qualified by how the pen is used."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-LIM-003",
+      "question": "What is the fiat value of one satoshi today?",
+      "category": "limited_evidence",
+      "difficulty": "medium",
+      "time_sensitive": true,
+      "reference_date": "2026-10-25",
+      "evaluation_instruction": "The fiat value of a satoshi changes continuously. Judge whether the answer explains that the value floats with the exchange rate and points to a current market source; do not compare any specific number against a live price.",
+      "expected_research": [
+        "the answer explains that the value floats with the exchange rate",
+        "a current market source is identified rather than a frozen price"
+      ],
+      "required_claims": ["satoshi"],
+      "prohibited_claims": ["the price is fixed"],
+      "expected_sources": ["a market-data or currency-reference source"],
+      "rubric": [
+        {
+          "id": "floats",
+          "question": "Does the answer state that the value changes continuously?",
+          "guidance": "A fixed fiat value for a satoshi is wrong on its face."
+        },
+        {
+          "id": "unit",
+          "question": "Is the unit relationship correct?",
+          "guidance": "A satoshi is one hundred millionth of a bitcoin."
+        },
+        {
+          "id": "sourced",
+          "question": "Is a current market source identified?",
+          "guidance": "The answer should point where a live price can be read."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Satoshi denomination reference",
+            "url": "https://example.org/crypto/satoshi-unit",
+            "snippet": "One bitcoin equals 100,000,000 satoshis, the smallest transactable unit defined by the protocol."
+          },
+          {
+            "title": "Market data - ticker",
+            "url": "https://example.org/crypto/ticker",
+            "snippet": "The ticker quotes bitcoin against several fiat currencies and updates continuously during trading."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "satoshi value in fiat currency" } }
+            ]
+          },
+          {
+            "text": "A satoshi is one hundred millionth of a bitcoin, and its fiat value floats with the exchange rate, so read the current price from a live market ticker rather than treating any quoted figure as fixed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CFL-001",
+      "question": "How many hours of sleep do adults need each night?",
+      "category": "conflicting_sources",
+      "difficulty": "medium",
+      "time_sensitive": false,
+      "expected_research": [
+        "sources giving different figures are both represented",
+        "the answer explains why the figures differ"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["everyone needs exactly eight hours"],
+      "expected_sources": ["a health authority recommendation and a research source with a range"],
+      "rubric": [
+        {
+          "id": "conflict-shown",
+          "question": "Is the disagreement between sources visible?",
+          "guidance": "A single headline number hides the conflict the question asks about."
+        },
+        {
+          "id": "reconciled",
+          "question": "Does the answer explain the difference?",
+          "guidance": "Guidance ranges versus observational associations are different kinds of claim."
+        },
+        {
+          "id": "no-universal",
+          "question": "Does the answer avoid a universal prescription?",
+          "guidance": "Individual need varies by age and circumstance."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Sleep duration recommendation",
+            "url": "https://example.org/health/sleep-recommendation",
+            "snippet": "Health authorities commonly recommend that adults aim for seven to nine hours of sleep per night."
+          },
+          {
+            "title": "Observational sleep study",
+            "url": "https://example.org/health/sleep-association",
+            "snippet": "An observational cohort associated sleeping beyond nine hours with higher rates of reported health conditions."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "recommended sleep hours adults" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "sleep duration research disagreement" } }
+            ]
+          },
+          {
+            "text": "Sources disagree: health guidance recommends a range of seven to nine hours, while observational studies report different associations at the extremes; the figures differ because guidelines and cohort findings answer different questions, and individual need varies."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CFL-002",
+      "question": "Does working from home increase productivity?",
+      "category": "conflicting_sources",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "supporting and contradicting findings are both cited",
+        "the answer states what would settle the question"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["proven to increase productivity"],
+      "expected_sources": ["a controlled study and a source reporting contrary findings"],
+      "rubric": [
+        {
+          "id": "both-directions",
+          "question": "Are both directions of evidence present?",
+          "guidance": "Reporting only supportive findings fails this case."
+        },
+        {
+          "id": "method-caveat",
+          "question": "Is a methodological caveat given?",
+          "guidance": "Self-reported surveys and randomized trials differ in weight."
+        },
+        {
+          "id": "no-settled",
+          "question": "Does the answer avoid calling the question settled?",
+          "guidance": "'Proven' overstates a contested evidence base."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Remote work gains - survey report",
+            "url": "https://example.org/work/remote-gains",
+            "snippet": "A survey of remote employees reported fewer interruptions and more self-reported focus time at home."
+          },
+          {
+            "title": "Coordination costs - working paper",
+            "url": "https://example.org/work/coordination-costs",
+            "snippet": "A working paper found slower cross-team communication and fewer new connections among fully remote employees."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "working from home productivity evidence" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "remote work coordination costs study" } }
+            ]
+          },
+          {
+            "text": "Evidence points both ways: surveys report higher self-reported focus, while studies of collaboration report coordination costs; because the designs and measurements differ, the question is not proven either way."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-CFL-003",
+      "question": "What is the safe upper limit of daily caffeine intake for adults?",
+      "category": "conflicting_sources",
+      "difficulty": "medium",
+      "time_sensitive": true,
+      "reference_date": "2026-10-25",
+      "evaluation_instruction": "Guidance changes over time and differs by authority. Judge whether the answer attributes figures to named health authorities with dates and notes that the limits differ between bodies; do not require one specific milligram figure.",
+      "expected_research": [
+        "figures are attributed to named authorities",
+        "differences between authorities are reported"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["the same limit applies to everyone"],
+      "expected_sources": ["at least two health authorities with differing figures"],
+      "rubric": [
+        {
+          "id": "attributed",
+          "question": "Is each figure attributed to a named authority?",
+          "guidance": "Unattributed milligram figures cannot be checked."
+        },
+        {
+          "id": "conflict-shown",
+          "question": "Is the difference between authorities reported?",
+          "guidance": "Advisory bodies publish different upper limits."
+        },
+        {
+          "id": "no-universal",
+          "question": "Does the answer avoid one universal number?",
+          "guidance": "Pregnancy, medication, and age change the applicable limit."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 2
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Food safety authority - caffeine advice",
+            "url": "https://example.org/health/caffeine-advice",
+            "snippet": "One food safety authority advises healthy adults to keep daily caffeine below 400 milligrams, with lower limits in pregnancy."
+          },
+          {
+            "title": "Paediatric guidance - caffeinated drinks",
+            "url": "https://example.org/health/paediatric-caffeine",
+            "snippet": "A second authority publishes a lower threshold for adolescents and advises against caffeinated energy drinks for children."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "safe daily caffeine limit adults authority" } }
+            ]
+          },
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "caffeine guidance differences between authorities" } }
+            ]
+          },
+          {
+            "text": "Authorities differ: one food safety body advises healthy adults to stay below 400 mg per day, while another publishes lower thresholds for younger people; the limit is not exactly 400 mg for everyone, and pregnancy or medication can lower it further."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-INC-001",
+      "question": "Did the 2024 Halcyon Accord reduce tariff rates between its signatories?",
+      "category": "disclosure",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "the retrieved source does not answer the question",
+        "the report says the conclusion cannot be established"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["definitively established"],
+      "expected_sources": ["a source that does not contain the requested evidence"],
+      "rubric": [
+        {
+          "id": "gap-disclosed",
+          "question": "Is the evidence gap stated explicitly?",
+          "guidance": "The report must say the question is unanswered by its sources."
+        },
+        {
+          "id": "no-conclusion",
+          "question": "Is any yes/no conclusion withheld?",
+          "guidance": "A definitive verdict with no supporting evidence is a failure."
+        },
+        {
+          "id": "cited-honestly",
+          "question": "Are the sources that exist cited without being stretched?",
+          "guidance": "A source that does not answer the question must not be quoted as if it did."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 1,
+        "must_disclose_limitations": true
+      },
+      "fixture": {
+        "results": [
+          {
+            "title": "Trade policy archive - index page",
+            "url": "https://example.org/trade/archive-index",
+            "snippet": "This index lists trade policy documents by year; individual agreement texts are not reproduced here."
+          }
+        ],
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Halcyon Accord tariff reductions signatories" } }
+            ]
+          },
+          {
+            "text": "The retrieved archive only lists document titles, so no conclusion about tariff reductions can be stated from these sources."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-INC-002",
+      "question": "List every bill that a mid-size national parliament passed during its most recent full session.",
+      "category": "disclosure",
+      "difficulty": "hard",
+      "time_sensitive": false,
+      "expected_research": [
+        "no search is performed within the bounds of this fixture",
+        "the answer declares itself incomplete rather than exhaustive"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["complete and verified list"],
+      "expected_sources": ["none: the run stops before consulting any source"],
+      "rubric": [
+        {
+          "id": "incomplete-stated",
+          "question": "Does the answer declare itself incomplete?",
+          "guidance": "An unverified list presented as complete fails this case."
+        },
+        {
+          "id": "limitation-present",
+          "question": "Does the report carry a recorded limitation?",
+          "guidance": "The limitation section must not be empty."
+        },
+        {
+          "id": "no-fabrication",
+          "question": "Are no bill titles invented?",
+          "guidance": "Any bill listed without a registered source is fabricated."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["completed"],
+        "min_sources": 0,
+        "must_disclose_limitations": true
+      },
+      "fixture": {
+        "results": [],
+        "turns": [
+          {
+            "text": "I did not research this within the available bounds, so the answer is an incomplete draft, and none of its contents should be treated as confirmed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "EV-INC-003",
+      "question": "What was agreed at the 2026 Halcyon summit?",
+      "category": "disclosure",
+      "difficulty": "medium",
+      "time_sensitive": true,
+      "reference_date": "2026-10-25",
+      "evaluation_instruction": "The fixture deliberately fails the search provider. Judge that the provider failure and the resulting incompleteness are disclosed; do not judge any statement about a real summit, which the run never retrieved.",
+      "expected_research": [
+        "the search provider fails on the only attempt",
+        "the report discloses that nothing was verified"
+      ],
+      "required_claims": [],
+      "prohibited_claims": ["the summit outcomes are confirmed"],
+      "expected_sources": ["none: the provider fails before any source is registered"],
+      "rubric": [
+        {
+          "id": "failure-disclosed",
+          "question": "Is the provider failure recorded in the report?",
+          "guidance": "A failed tool attempt must appear in the run's error record."
+        },
+        {
+          "id": "incomplete-stated",
+          "question": "Is the answer described as unverified?",
+          "guidance": "Nothing was retrieved, so nothing may be asserted as confirmed."
+        },
+        {
+          "id": "not-complete",
+          "question": "Is the run's status honest about the failed work?",
+          "guidance": "A run whose only tool failed must not be labelled completed."
+        }
+      ],
+      "conditions": {
+        "allowed_statuses": ["partial"],
+        "min_sources": 0,
+        "must_disclose_limitations": true
+      },
+      "fixture": {
+        "results": [],
+        "search_error": "search provider quota exceeded for this fixture",
+        "turns": [
+          {
+            "tool_calls": [
+              { "name": "web_search", "arguments": { "query": "Halcyon summit 2026 agreements" } }
+            ]
+          },
+          {
+            "text": "The search provider failed, so nothing about the summit was retrieved and the summit outcomes are not confirmed; the answer remains incomplete."
+          }
+        ]
+      }
+    }
+  ]
+}

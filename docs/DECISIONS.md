@@ -191,6 +191,24 @@ Record meaningful decisions here. Do not treat proposals as finalized decisions 
 - **Consequences:** live mode is runnable in this environment without paid OpenAI/Tavily accounts. Answer *quality* remains unmeasured — the offline benchmark still refuses accuracy claims (PRD §10).
 - **Revisit conditions:** if a second *chat-completions-only* provider must be supported, add a distinct adapter rather than bending the Responses-based one.
 
+## ADR-019 — Research quality evaluation: offline-first, review-gated accuracy
+
+- **Status:** Accepted (Sprint 8, US-801 … US-808)
+- **Context:** Sprints 0–7b verified structure, bounds, and honesty, but *answer quality* was unmeasured — the gap recorded in `docs/STATUS.md`. The brief required a reproducible evaluation that never invents numbers. Acceptance criteria were written into `docs/ROADMAP.md` before implementation.
+- **Decision:**
+  - **One dataset, two runners.** `evaluation_dataset/cases.json` (24 cases, 8 required categories, fixtures included) is version-controlled *outside* `src/`. `python -m atlas.evalrun` runs it offline by default; `--live` is the only way to reach real providers.
+  - **Offline runs ignore the environment.** `Settings.from_env({})` plus per-case fixture providers make the offline path credential-free, network-free, and reproducible; a test blocks `socket.socket.connect` to prove no external call happens.
+  - **Three-level citation verdicts.** `resolves` and `excerpt_matches_evidence` are deterministic; `supports_claim` is `needs_review` until a human records it — a resolving URL never implies support.
+  - **Reuse over duplication.** `evaluate()` (Sprint 6) backs the `status_honesty` check; `ReportBuilder`'s excerpt rule was extracted into public `excerpt_support_kind()` so builder and evaluator share one implementation; citation resolution stays in `SourceRegistry.resolve`.
+  - **Accuracy is review-gated in code.** A `CaseResult` with `factual_accuracy: pass` and no `ReviewRecord` fails validation, so an unreviewed claim can never be represented as verified.
+  - **Metrics show their working.** Every metric reports numerator, denominator, and unknown count; no valid observations → `value: null` (`unavailable`), never `0`. Cost is always unavailable because no pricing table exists.
+  - **Live is opt-in, bounded, single-attempt.** The refusal check runs before any provider is constructed; existing iteration/result/deadline bounds apply; there is no automatic retry; recorded strings are redacted with the configured credentials.
+- **Why not an LLM judge:** a judge model would add a paid dependency, its own failure modes, and an accuracy number that is not independently verifiable. Claim support stays `needs_review` instead.
+- **Why the dataset lives outside `src/`:** evaluation fixtures are test data, not application code; keeping them separate lets the schema be validated without shipping fixtures with the package.
+- **Verification (executed, not assumed):** `pytest` → **585 passed, 4 deselected**; `ruff check .` and `ruff format --check .` clean. Offline baseline over all 24 cases: **0 deterministic check failures**, 1 scripted provider failure (by design), all 24 accuracy fields `needs_review`. The user-approved 3-case live smoke ran against OpenRouter + Exa: 2/3 completed, 21/21 citations resolved, 0 provider failures, 0 reviews recorded. Both runs are recorded in `docs/EVALUATION.md` and committed under `evaluation_results/`.
+- **Consequences:** answer quality is now *measured where it can be measured honestly* and explicitly marked unverified where it cannot. Producing an accuracy percentage requires a human review pass, which has not been done for any case.
+- **Revisit conditions:** if a review pass is ever performed, record it in a reviews file and re-run `evalrun summarize`; if reliable pricing is configured, replace the always-unavailable cost metric with a computed one.
+
 ## Open decisions from Sprint 0
 
 Resolved during Sprint 1 — see the "Sprint 0 decisions resolved in Sprint 1" section below.

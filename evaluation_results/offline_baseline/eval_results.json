@@ -1,0 +1,2581 @@
+{
+  "bounds": {
+    "deadline_seconds": 120.0,
+    "max_iterations": 8,
+    "max_results": 5
+  },
+  "cases": [
+    {
+      "case_id": "EV-GEN-001",
+      "category": "general_factual",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the boiling point of water at sea level in degrees Celsius?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-GEN-002",
+      "category": "general_factual",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Who wrote the novel Pride and Prejudice and when was it published?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-GEN-003",
+      "category": "general_factual",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the current population of Canada?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-SCI-001",
+      "category": "science_technology",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What does the James Webb Space Telescope observe, and why is that wavelength range useful?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-SCI-002",
+      "category": "science_technology",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "How do mRNA vaccines trigger an immune response?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-SCI-003",
+      "category": "science_technology",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Why does the sky appear blue during the day?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-PRG-001",
+      "category": "programming",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is a list comprehension in Python and when should a plain loop be preferred?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-PRG-002",
+      "category": "programming",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the difference between a thread and a process in Python?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-PRG-003",
+      "category": "programming",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 3 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "3 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "3 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "5 limitation(s) disclosed",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=partial, termination=max_iterations",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 3,
+          "excerpts_checked": 3,
+          "excerpts_matched": 3,
+          "resolved": 3
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "partial",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Explain in depth how garbage collection works in Python, including generational cycles.",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 3,
+        "duplicate_calls": 0,
+        "findings": 3,
+        "limitations": 5,
+        "sources_registered": 3,
+        "status": "partial",
+        "termination_reason": "max_iterations",
+        "token_usage_reported": false,
+        "tool_calls": 8,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "max_iterations",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CMP-001",
+      "category": "comparative",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Compare PostgreSQL and MySQL for a write-heavy workload.",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CMP-002",
+      "category": "comparative",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Compare React and Vue for a small team building an internal dashboard.",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CMP-003",
+      "category": "comparative",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Compare SQLite and PostgreSQL for an offline-capable desktop application.",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-MUL-001",
+      "category": "multi_source",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 4 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "4 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "4 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S4",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 4,
+          "excerpts_checked": 4,
+          "excerpts_matched": 4,
+          "resolved": 4
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What are the main causes of the 2008 global financial crisis according to economists?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 4,
+        "duplicate_calls": 0,
+        "findings": 4,
+        "limitations": 5,
+        "sources_registered": 4,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-MUL-002",
+      "category": "multi_source",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 4 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "4 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "4 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S4",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 4,
+          "excerpts_checked": 4,
+          "excerpts_matched": 4,
+          "resolved": 4
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What does research say about the effect of remote work on productivity?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 4,
+        "duplicate_calls": 0,
+        "findings": 4,
+        "limitations": 5,
+        "sources_registered": 4,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-MUL-003",
+      "category": "multi_source",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 3 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "3 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "3 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 3,
+          "excerpts_checked": 3,
+          "excerpts_matched": 3,
+          "resolved": 3
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What factors do economists cite as drivers of inflation?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 3,
+        "duplicate_calls": 0,
+        "findings": 3,
+        "limitations": 4,
+        "sources_registered": 3,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-LIM-001",
+      "category": "limited_evidence",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "report cites no sources; nothing to resolve",
+            "id": "citations_resolve",
+            "status": "unknown"
+          },
+          {
+            "detail": "0 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "report carries no quoted excerpts",
+            "id": "excerpt_support",
+            "status": "unknown"
+          },
+          {
+            "detail": "1 limitation(s) disclosed",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [],
+        "counts": {
+          "cited": 0,
+          "excerpts_checked": 0,
+          "excerpts_matched": 0,
+          "resolved": 0
+        }
+      },
+      "citation_resolution": "unknown",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "unknown",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What were the 2019 sales figures of the privately held software company Quietpdf?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 0,
+        "duplicate_calls": 0,
+        "findings": 0,
+        "limitations": 1,
+        "sources_registered": 0,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-LIM-002",
+      "category": "limited_evidence",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 1 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "1 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "1 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 1,
+          "excerpts_checked": 1,
+          "excerpts_matched": 1,
+          "resolved": 1
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the average lifespan of a ballpoint pen in normal use?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 1,
+        "duplicate_calls": 0,
+        "findings": 1,
+        "limitations": 2,
+        "sources_registered": 1,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-LIM-003",
+      "category": "limited_evidence",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the fiat value of one satoshi today?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CFL-001",
+      "category": "conflicting_sources",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "How many hours of sleep do adults need each night?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CFL-002",
+      "category": "conflicting_sources",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Does working from home increase productivity?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-CFL-003",
+      "category": "conflicting_sources",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 2 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "2 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "2 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 2,
+          "excerpts_checked": 2,
+          "excerpts_matched": 2,
+          "resolved": 2
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "What is the safe upper limit of daily caffeine intake for adults?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 2,
+        "duplicate_calls": 0,
+        "findings": 2,
+        "limitations": 3,
+        "sources_registered": 2,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 2,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-INC-001",
+      "category": "disclosure",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 1 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "1 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "1 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 1,
+          "excerpts_checked": 1,
+          "excerpts_matched": 1,
+          "resolved": 1
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "Did the 2024 Halcyon Accord reduce tariff rates between its signatories?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 1,
+        "duplicate_calls": 0,
+        "findings": 1,
+        "limitations": 2,
+        "sources_registered": 1,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-INC-002",
+      "category": "disclosure",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "report cites no sources; nothing to resolve",
+            "id": "citations_resolve",
+            "status": "unknown"
+          },
+          {
+            "detail": "0 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "report carries no quoted excerpts",
+            "id": "excerpt_support",
+            "status": "unknown"
+          },
+          {
+            "detail": "1 limitation(s) disclosed",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [],
+        "counts": {
+          "cited": 0,
+          "excerpts_checked": 0,
+          "excerpts_matched": 0,
+          "resolved": 0
+        }
+      },
+      "citation_resolution": "unknown",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "hard",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "unknown",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": false,
+      "question": "List every bill that a mid-size national parliament passed during its most recent full session.",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 0,
+        "duplicate_calls": 0,
+        "findings": 0,
+        "limitations": 1,
+        "sources_registered": 0,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 0,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    },
+    {
+      "case_id": "EV-INC-003",
+      "category": "disclosure",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "report cites no sources; nothing to resolve",
+            "id": "citations_resolve",
+            "status": "unknown"
+          },
+          {
+            "detail": "0 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "report carries no quoted excerpts",
+            "id": "excerpt_support",
+            "status": "unknown"
+          },
+          {
+            "detail": "3 limitation(s) disclosed",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=partial, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [],
+        "counts": {
+          "cited": 0,
+          "excerpts_checked": 0,
+          "excerpts_matched": 0,
+          "resolved": 0
+        }
+      },
+      "citation_resolution": "unknown",
+      "completeness_relevance": "needs_review",
+      "completion_status": "partial",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:46:37+00:00",
+      "evaluation_limitations": [
+        "offline fixture run: providers are scripted fakes, so this measures the pipeline, never a real model's research quality",
+        "factual accuracy and completeness/relevance require a recorded human review"
+      ],
+      "evidence_support": "unknown",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [
+        "run error: error: search provider quota exceeded for this fixture"
+      ],
+      "mode": "offline_fixture",
+      "model_id": "scripted-fixture-model",
+      "provider_failure": true,
+      "question": "What was agreed at the 2026 Halcyon summit?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 0,
+        "duplicate_calls": 0,
+        "findings": 0,
+        "limitations": 3,
+        "sources_registered": 0,
+        "status": "partial",
+        "termination_reason": "completed",
+        "token_usage_reported": false,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "scripted-fixture-search",
+      "termination_reason": "completed",
+      "token_usage": null
+    }
+  ],
+  "dataset_path": "/home/akkushon-kamen/Desktop/007/atlas_opencode_starter_kit/atlas_opencode_starter/evaluation_dataset/cases.json",
+  "dataset_version": "1.0.0",
+  "evaluation_limitations": [
+    "deterministic checks cover structure, citations, excerpt support, disclosure, status honesty, and case conditions only",
+    "factual accuracy and completeness/relevance stay needs_review until a human review is recorded; no accuracy figure is computed without one",
+    "cost is always unavailable: no reliable per-model pricing is configured",
+    "providers are scripted fixtures; offline results say nothing about a real model's answer quality"
+  ],
+  "generated_at": "2026-10-25T07:46:37+00:00",
+  "metrics": [
+    {
+      "denominator": 24,
+      "id": "completion_rate",
+      "label": "Case completion rate",
+      "note": "completed runs / runs that produced a report",
+      "numerator": 22,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 0.9166666666666666
+    },
+    {
+      "denominator": 46,
+      "id": "citation_resolution_rate",
+      "label": "Citation resolution rate",
+      "note": "resolved citation ids / cited citation ids",
+      "numerator": 46,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 1.0
+    },
+    {
+      "denominator": 46,
+      "id": "excerpt_verification_rate",
+      "label": "Evidence-excerpt verification rate",
+      "note": "excerpts found verbatim in stored evidence / excerpts quoted",
+      "numerator": 46,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 1.0
+    },
+    {
+      "denominator": 0,
+      "id": "unsupported_claim_rate",
+      "label": "Unsupported-claim rate (reviewed claims only)",
+      "note": "no valid observations: claims judged unsupported / claims actually reviewed",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    },
+    {
+      "denominator": 0,
+      "id": "factual_accuracy",
+      "label": "Factual accuracy (reviewed cases only)",
+      "note": "no valid observations: cases judged pass / cases with a recorded accuracy review",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    },
+    {
+      "denominator": 0,
+      "id": "completeness_relevance",
+      "label": "Completeness and relevance (reviewed cases only)",
+      "note": "no valid observations: cases judged pass / cases with a recorded completeness review",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    },
+    {
+      "denominator": 24,
+      "id": "provider_failure_rate",
+      "label": "Provider failure rate",
+      "note": "runs that hit a model/search/network failure / all cases",
+      "numerator": 1,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 0.041666666666666664
+    },
+    {
+      "denominator": 0,
+      "id": "token_usage_average",
+      "label": "Average token usage (reported runs)",
+      "note": "no run reported token usage; usage is never estimated",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    },
+    {
+      "denominator": 0,
+      "id": "token_usage_median",
+      "label": "Median token usage (reported runs)",
+      "note": "no run reported token usage; usage is never estimated",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    },
+    {
+      "denominator": null,
+      "id": "estimated_cost",
+      "label": "Estimated cost (USD)",
+      "note": "unavailable: no reliable per-model pricing is configured; cost is never estimated",
+      "numerator": null,
+      "unavailable": true,
+      "unknown": 24,
+      "value": null
+    }
+  ],
+  "mode": "offline_fixture",
+  "model_id": "scripted-fixture-model",
+  "run_id": "eval-offline_fixture-20261025T074637Z",
+  "search_provider": "scripted-fixture-search"
+}

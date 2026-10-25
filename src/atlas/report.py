@@ -266,20 +266,35 @@ class ReportBuilder:
         if not cleaned:
             raise CitationValidationError("an evidence excerpt must not be empty")
 
-        if record.page_text and _normalize(record.page_text).find(_normalize(cleaned)) != -1:
-            kind: EvidenceKind = "page_text"
-        elif (
-            record.search_snippet
-            and _normalize(record.search_snippet).find(_normalize(cleaned)) != -1
-        ):
-            kind = "search_snippet"
-        else:
+        kind = excerpt_support_kind(record, cleaned)
+        if kind is None:
             raise CitationValidationError(
                 f"excerpt is not present in the stored evidence of [{source_id}]; "
                 "evidence must be quoted, not invented"
             )
 
         return Evidence(source_id=source_id, excerpt=cleaned[:MAX_EXCERPT_CHARS], kind=kind)
+
+
+def excerpt_support_kind(record: SourceRecord, excerpt: str) -> EvidenceKind | None:
+    """Return how (or whether) an excerpt is supported by a source's stored evidence.
+
+    Shared by :class:`ReportBuilder` (build-time rejection of invented
+    excerpts) and the evaluation quality checks (US-802 criterion 4), so the
+    support rule exists in exactly one place.
+
+    Returns:
+        ``"page_text"`` or ``"search_snippet"`` when the excerpt appears
+        verbatim in that tier of stored evidence, otherwise ``None``.
+    """
+    cleaned = " ".join(excerpt.split())
+    if not cleaned:
+        return None
+    if record.page_text and _normalize(record.page_text).find(_normalize(cleaned)) != -1:
+        return "page_text"
+    if record.search_snippet and _normalize(record.search_snippet).find(_normalize(cleaned)) != -1:
+        return "search_snippet"
+    return None
 
 
 def _normalize(text: str) -> str:

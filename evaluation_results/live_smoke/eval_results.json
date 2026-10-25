@@ -1,0 +1,553 @@
+{
+  "bounds": {
+    "deadline_seconds": 120.0,
+    "max_iterations": 8,
+    "max_results": 5
+  },
+  "cases": [
+    {
+      "case_id": "EV-GEN-001",
+      "category": "general_factual",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 5 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "5 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "5 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "required claim missing: '100 degrees Celsius'",
+            "id": "case_conditions",
+            "status": "fail"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S4",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S5",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 5,
+          "excerpts_checked": 5,
+          "excerpts_matched": 5,
+          "resolved": 5
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:48:09+00:00",
+      "evaluation_limitations": [
+        "factual accuracy and completeness/relevance require a recorded human review; deterministic checks cover structure, citations, and disclosure only",
+        "one attempt per case; provider failures are recorded, not retried"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [
+        "case_conditions: required claim missing: '100 degrees Celsius'"
+      ],
+      "mode": "live",
+      "model_id": "nvidia/nemotron-3.5-lightning:free",
+      "provider_failure": false,
+      "question": "What is the boiling point of water at sea level in degrees Celsius?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 5,
+        "duplicate_calls": 0,
+        "findings": 5,
+        "limitations": 6,
+        "sources_registered": 5,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": true,
+        "tool_calls": 1,
+        "unsupported_calls": 0
+      },
+      "search_provider": "exa",
+      "termination_reason": "completed",
+      "token_usage": {
+        "input_tokens": 1074,
+        "output_tokens": 143,
+        "total_tokens": 1217
+      }
+    },
+    {
+      "case_id": "EV-SCI-001",
+      "category": "science_technology",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 11 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "11 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "11 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "complete run with sources; nothing to disclose",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=completed, termination=completed",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "all case-specific conditions satisfied",
+            "id": "case_conditions",
+            "status": "pass"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S4",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S5",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S6",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S7",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S8",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S9",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S10",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S11",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 11,
+          "excerpts_checked": 11,
+          "excerpts_matched": 11,
+          "resolved": 11
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "completed",
+      "difficulty": "medium",
+      "evaluated_at": "2026-10-25T07:48:29+00:00",
+      "evaluation_limitations": [
+        "factual accuracy and completeness/relevance require a recorded human review; deterministic checks cover structure, citations, and disclosure only",
+        "one attempt per case; provider failures are recorded, not retried"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [],
+      "mode": "live",
+      "model_id": "nvidia/nemotron-3.5-lightning:free",
+      "provider_failure": false,
+      "question": "What does the James Webb Space Telescope observe, and why is that wavelength range useful?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 11,
+        "duplicate_calls": 0,
+        "findings": 11,
+        "limitations": 12,
+        "sources_registered": 11,
+        "status": "completed",
+        "termination_reason": "completed",
+        "token_usage_reported": true,
+        "tool_calls": 3,
+        "unsupported_calls": 0
+      },
+      "search_provider": "exa",
+      "termination_reason": "completed",
+      "token_usage": {
+        "input_tokens": 1578,
+        "output_tokens": 592,
+        "total_tokens": 2170
+      }
+    },
+    {
+      "case_id": "EV-PRG-001",
+      "category": "programming",
+      "checks": {
+        "checks": [
+          {
+            "detail": "all required sections rendered",
+            "id": "structure",
+            "status": "pass"
+          },
+          {
+            "detail": "all 5 cited ids resolve",
+            "id": "citations_resolve",
+            "status": "pass"
+          },
+          {
+            "detail": "5 evidence references all exist",
+            "id": "evidence_refs_exist",
+            "status": "pass"
+          },
+          {
+            "detail": "5 excerpts verbatim in evidence",
+            "id": "excerpt_support",
+            "status": "pass"
+          },
+          {
+            "detail": "7 limitation(s) disclosed",
+            "id": "disclosure",
+            "status": "pass"
+          },
+          {
+            "detail": "status=partial, termination=max_iterations",
+            "id": "status_honesty",
+            "status": "pass"
+          },
+          {
+            "detail": "status 'partial' not in allowed ['completed']",
+            "id": "case_conditions",
+            "status": "fail"
+          },
+          {
+            "detail": "no fabricated reference or invented excerpt would survive builder validation",
+            "id": "citation_validation_replay",
+            "status": "pass"
+          }
+        ],
+        "citations": [
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S1",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S2",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S3",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S4",
+            "supports_claim": "needs_review"
+          },
+          {
+            "detail": "excerpt(s) verbatim in stored evidence",
+            "excerpt_matches_evidence": "pass",
+            "resolves": "pass",
+            "source_id": "S5",
+            "supports_claim": "needs_review"
+          }
+        ],
+        "counts": {
+          "cited": 5,
+          "excerpts_checked": 5,
+          "excerpts_matched": 5,
+          "resolved": 5
+        }
+      },
+      "citation_resolution": "pass",
+      "completeness_relevance": "needs_review",
+      "completion_status": "partial",
+      "difficulty": "easy",
+      "evaluated_at": "2026-10-25T07:48:51+00:00",
+      "evaluation_limitations": [
+        "factual accuracy and completeness/relevance require a recorded human review; deterministic checks cover structure, citations, and disclosure only",
+        "one attempt per case; provider failures are recorded, not retried"
+      ],
+      "evidence_support": "pass",
+      "factual_accuracy": "needs_review",
+      "failure_reasons": [
+        "case_conditions: status 'partial' not in allowed ['completed']"
+      ],
+      "mode": "live",
+      "model_id": "nvidia/nemotron-3.5-lightning:free",
+      "provider_failure": false,
+      "question": "What is a list comprehension in Python and when should a plain loop be preferred?",
+      "review": null,
+      "run_metrics": {
+        "citations_valid": true,
+        "direct_findings": 5,
+        "duplicate_calls": 4,
+        "findings": 5,
+        "limitations": 7,
+        "sources_registered": 5,
+        "status": "partial",
+        "termination_reason": "max_iterations",
+        "token_usage_reported": true,
+        "tool_calls": 8,
+        "unsupported_calls": 0
+      },
+      "search_provider": "exa",
+      "termination_reason": "max_iterations",
+      "token_usage": {
+        "input_tokens": 2005,
+        "output_tokens": 169,
+        "total_tokens": 2174
+      }
+    }
+  ],
+  "dataset_path": "/home/akkushon-kamen/Desktop/007/atlas_opencode_starter_kit/atlas_opencode_starter/evaluation_dataset/cases.json",
+  "dataset_version": "1.0.0",
+  "evaluation_limitations": [
+    "deterministic checks cover structure, citations, excerpt support, disclosure, status honesty, and case conditions only",
+    "factual accuracy and completeness/relevance stay needs_review until a human review is recorded; no accuracy figure is computed without one",
+    "cost is always unavailable: no reliable per-model pricing is configured"
+  ],
+  "generated_at": "2026-10-25T07:48:51+00:00",
+  "metrics": [
+    {
+      "denominator": 3,
+      "id": "completion_rate",
+      "label": "Case completion rate",
+      "note": "completed runs / runs that produced a report",
+      "numerator": 2,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 0.6666666666666666
+    },
+    {
+      "denominator": 21,
+      "id": "citation_resolution_rate",
+      "label": "Citation resolution rate",
+      "note": "resolved citation ids / cited citation ids",
+      "numerator": 21,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 1.0
+    },
+    {
+      "denominator": 21,
+      "id": "excerpt_verification_rate",
+      "label": "Evidence-excerpt verification rate",
+      "note": "excerpts found verbatim in stored evidence / excerpts quoted",
+      "numerator": 21,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 1.0
+    },
+    {
+      "denominator": 0,
+      "id": "unsupported_claim_rate",
+      "label": "Unsupported-claim rate (reviewed claims only)",
+      "note": "no valid observations: claims judged unsupported / claims actually reviewed",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 3,
+      "value": null
+    },
+    {
+      "denominator": 0,
+      "id": "factual_accuracy",
+      "label": "Factual accuracy (reviewed cases only)",
+      "note": "no valid observations: cases judged pass / cases with a recorded accuracy review",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 3,
+      "value": null
+    },
+    {
+      "denominator": 0,
+      "id": "completeness_relevance",
+      "label": "Completeness and relevance (reviewed cases only)",
+      "note": "no valid observations: cases judged pass / cases with a recorded completeness review",
+      "numerator": 0,
+      "unavailable": true,
+      "unknown": 3,
+      "value": null
+    },
+    {
+      "denominator": 3,
+      "id": "provider_failure_rate",
+      "label": "Provider failure rate",
+      "note": "runs that hit a model/search/network failure / all cases",
+      "numerator": 0,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 0.0
+    },
+    {
+      "denominator": 3,
+      "id": "token_usage_average",
+      "label": "Average token usage (reported runs)",
+      "note": "mean of provider-reported total tokens; 0 run(s) reported no usage",
+      "numerator": 5561,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 1853.6666666666667
+    },
+    {
+      "denominator": 3,
+      "id": "token_usage_median",
+      "label": "Median token usage (reported runs)",
+      "note": "median of provider-reported total tokens",
+      "numerator": 5561,
+      "unavailable": false,
+      "unknown": 0,
+      "value": 2170.0
+    },
+    {
+      "denominator": null,
+      "id": "estimated_cost",
+      "label": "Estimated cost (USD)",
+      "note": "unavailable: no reliable per-model pricing is configured; cost is never estimated",
+      "numerator": null,
+      "unavailable": true,
+      "unknown": 3,
+      "value": null
+    }
+  ],
+  "mode": "live",
+  "model_id": "nvidia/nemotron-3.5-lightning:free",
+  "run_id": "eval-live-20261025T074851Z",
+  "search_provider": "exa"
+}

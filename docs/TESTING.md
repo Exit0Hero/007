@@ -36,6 +36,9 @@ Call real providers only when credentials are available and the user has approve
 ### 6. Security tests
 Test prohibited URL schemes, private/loopback/link-local destinations, redirect revalidation, DNS/IP checks, oversized responses, timeouts, prompt-injection text, and secret redaction.
 
+### 7. Evaluation tests (Sprint 8)
+Deterministic tests for the research-quality evaluation: dataset validation (valid, empty, malformed, duplicate IDs, missing fields), the eight quality checks, three-level citation verdicts, review-gated accuracy statuses, metric denominators and `unavailable` values, secret redaction, provider-failure classification, offline execution with sockets blocked, and live-mode refusal without opt-in. Fake providers and fixtures only — no live dependency in ordinary runs.
+
 ## Suggested commands
 
 The exact commands must match `pyproject.toml` and the implemented packaging setup.

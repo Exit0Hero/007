@@ -84,6 +84,29 @@ Exit codes:
 | 4 | Invalid or incomplete configuration |
 | 5 | Research executed but did not complete (partial, failed, or provider error) |
 
+### Research quality evaluation (Sprint 8)
+
+```bash
+# Offline: no credentials, no network, deterministic
+PYTHONPATH=src python -m atlas.evalrun run                 # all 24 cases
+PYTHONPATH=src python -m atlas.evalrun run --smoke         # three-case subset
+PYTHONPATH=src python -m atlas.evalrun list                # case IDs and categories
+
+# Opt-in live: makes real API calls, single attempt per case, no retry
+PYTHONPATH=src python -m atlas.evalrun run --live --smoke
+
+# Re-score saved results after recording a human review
+PYTHONPATH=src python -m atlas.evalrun summarize --results <eval_results.json> --reviews <reviews.json>
+```
+
+Each run writes `eval_results.json` (machine-readable) and `eval_summary.md`
+(human-readable) to `--out`. Exit codes: `0` all checks passed, `2` a quality
+or provider failure was recorded, `4` dataset error, `5` configuration error
+(for example `--live` without configuration). Factual accuracy and
+completeness stay `needs_review` until a human review is recorded — see
+`docs/EVALUATION.md` for the reviewer workflow, metric definitions, and the
+recorded results.
+
 ### Test and lint
 
 ```bash
@@ -115,7 +138,7 @@ keys are present, otherwise Exa is used).
 - `docs/SPRINTS.md`: sprint goals, scope, and exit gates
 - `docs/STATUS.md`: canonical current project state
 - `docs/DECISIONS.md`: architecture decision log
-- `docs/EVALUATION.md`: recorded benchmark outcomes and what was not measured
+- `docs/EVALUATION.md`: recorded evaluation results, metric definitions, reviewer workflow, and what cannot be measured
 - `docs/TESTING.md`: test strategy and verification policy
 - `docs/SECURITY.md`: threat model and security requirements
 - `docs/DEFINITION_OF_DONE.md`: completion checklist
@@ -127,8 +150,10 @@ keys are present, otherwise Exa is used).
 ## Important status note
 
 `docs/STATUS.md` is the canonical current state and reflects only verified
-work. As of Sprint 7b, live mode has been exercised end to end against
-OpenRouter (model) and Exa (search): the live test suite passes and a real
-CLI run produced a completed, citation-resolving report. Offline tests still
-do not prove answer quality — the offline benchmark in `docs/EVALUATION.md`
-measures determinism and structure, not accuracy.
+work. As of Sprint 8, the repository carries a 24-case research-quality
+dataset and an evaluation CLI: the offline evaluation runs with no
+credentials, and a user-approved 3-case live smoke ran against OpenRouter
+(model) and Exa (search), recording 21/21 resolving citations and zero
+provider failures. Offline tests still do **not** prove answer quality —
+factual accuracy and completeness are reported as `needs_review` for every
+case until a human review is recorded (`docs/EVALUATION.md`).

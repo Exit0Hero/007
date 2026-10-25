@@ -133,10 +133,11 @@ All run on the committed tree:
 
 ---
 
-## 4. Delivery: 16 commits on `master`
+## 4. Delivery: 17 commits on `master`
 
 ```
-<sprint8-commit> Research quality evaluation: 24-case dataset, deterministic checks, review-gated accuracy (US-801…808, ADR-019)
+6863eaf Research quality evaluation: 24-case dataset, deterministic checks, review-gated accuracy (US-801-808, ADR-019)
+8da6139 Project report: delivered scope, verification evidence, honest limitations (Sprint 7b)
 4b3f73d US-706: Exa search provider and OpenAI-compatible base URL (ADR-018)
 d01095a Adversarial-content integration tests and deselected live tests (US-602/603/503)
 bb1a14e Report, pipeline, and evaluation tests (US-401/402/403/504)

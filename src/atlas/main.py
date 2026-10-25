@@ -264,6 +264,23 @@ def _depth_line(settings: Settings) -> str:
     )
 
 
+def _build_search_provider(settings: Settings) -> object:
+    """Pick the search provider deterministically (US-706): Tavily, else Exa."""
+    from atlas.tools.search import build_exa_provider, build_tavily_provider
+
+    if settings.tavily_api_key is not None:
+        return build_tavily_provider(
+            settings.tavily_api_key.get_secret_value(),
+            default_max_results=settings.max_results,
+        )
+    if settings.exa_api_key is not None:
+        return build_exa_provider(
+            settings.exa_api_key.get_secret_value(),
+            default_max_results=settings.max_results,
+        )
+    raise ConfigurationError("live mode requires one of TAVILY_API_KEY or EXA_API_KEY to be set.")
+
+
 def _build_live_runner(settings: Settings, err: object) -> object | None:
     """Construct real providers and return a callable research runner.
 
@@ -274,13 +291,11 @@ def _build_live_runner(settings: Settings, err: object) -> object | None:
     from atlas.model import OpenAIModelAdapter
     from atlas.pipeline import run_research
     from atlas.tools.fetch import PageFetcher, UrlPolicy
-    from atlas.tools.search import build_tavily_provider
 
     try:
-        search = build_tavily_provider(
-            settings.tavily_api_key.get_secret_value(),  # type: ignore[union-attr]
-            default_max_results=settings.max_results,
-        )
+        # Deterministic selection (US-706): Tavily when configured, else Exa.
+        # Settings.from_env guarantees at least one is present in live mode.
+        search = _build_search_provider(settings)
         fetcher = PageFetcher(UrlPolicy(), timeout=settings.timeout_seconds)
         model = OpenAIModelAdapter(settings, timeout=settings.timeout_seconds)
     except (ConfigurationError, ModelProviderError, AtlasError) as exc:

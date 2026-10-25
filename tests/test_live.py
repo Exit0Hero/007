@@ -9,8 +9,11 @@ These tests contact real providers and therefore:
 
 Run them explicitly with:
 
-    ATLAS_MODE=live OPENAI_API_KEY=... TAVILY_API_KEY=... ATLAS_MODEL=... \\
+    ATLAS_MODE=live OPENAI_API_KEY=... ATLAS_MODEL=... TAVILY_API_KEY=... \\
         pytest -m live
+
+(or `EXA_API_KEY=...` instead of `TAVILY_API_KEY`; set `OPENAI_BASE_URL` for
+an OpenAI-compatible endpoint such as OpenRouter).
 """
 
 from __future__ import annotations
@@ -23,15 +26,34 @@ pytestmark = pytest.mark.live
 
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY", "")
 TAVILY_KEY = os.environ.get("TAVILY_API_KEY", "")
+EXA_KEY = os.environ.get("EXA_API_KEY", "")
 MODEL = os.environ.get("ATLAS_MODEL", "")
 
 
+def _present(value: str) -> bool:
+    return bool(value.strip()) and not value.strip().lower().startswith("replace-with")
+
+
 def _have_openai() -> bool:
-    return bool(OPENAI_KEY.strip()) and not OPENAI_KEY.strip().lower().startswith("replace-with")
+    return _present(OPENAI_KEY)
 
 
 def _have_tavily() -> bool:
-    return bool(TAVILY_KEY.strip()) and not TAVILY_KEY.strip().lower().startswith("replace-with")
+    return _present(TAVILY_KEY)
+
+
+def _have_search() -> bool:
+    """One live search credential is enough (US-706): Tavily or Exa."""
+    return _present(TAVILY_KEY) or _present(EXA_KEY)
+
+
+def _search_provider(max_results: int):
+    """Build the configured search provider for a live test."""
+    from atlas.tools.search import build_exa_provider, build_tavily_provider
+
+    if _present(TAVILY_KEY):
+        return build_tavily_provider(TAVILY_KEY, default_max_results=max_results)
+    return build_exa_provider(EXA_KEY, default_max_results=max_results)
 
 
 @pytest.mark.skipif(
@@ -72,13 +94,12 @@ def test_live_model_reports_usage_when_available() -> None:
         assert (turn.usage.total_tokens or 0) >= 0
 
 
-@pytest.mark.skipif(not (_have_openai() and _have_tavily()), reason="live keys not configured")
+@pytest.mark.skipif(not (_have_openai() and _have_search()), reason="live keys not configured")
 def test_live_search_and_fetch_register_sources() -> None:
     """One real search; asserts sources register, not result quality."""
     from atlas.sources import SourceRegistry
-    from atlas.tools.search import build_tavily_provider
 
-    provider = build_tavily_provider(TAVILY_KEY, default_max_results=2)
+    provider = _search_provider(2)
     results = provider.search("Python programming language", 2)
 
     registry = SourceRegistry()
@@ -90,7 +111,7 @@ def test_live_search_and_fetch_register_sources() -> None:
 
 
 @pytest.mark.skipif(
-    not (_have_openai() and _have_tavily() and MODEL.strip()),
+    not (_have_openai() and _have_search() and MODEL.strip()),
     reason="live keys / ATLAS_MODEL not configured",
 )
 def test_live_end_to_end_research_run() -> None:
@@ -99,14 +120,13 @@ def test_live_end_to_end_research_run() -> None:
     from atlas.model import OpenAIModelAdapter
     from atlas.pipeline import run_research
     from atlas.tools.fetch import PageFetcher, UrlPolicy
-    from atlas.tools.search import build_tavily_provider
 
     settings = Settings.from_env()
     outcome = run_research(
         "What is the Python software foundation?",
         settings,
         model=OpenAIModelAdapter(settings),
-        search=build_tavily_provider(TAVILY_KEY, default_max_results=settings.max_results),
+        search=_search_provider(settings.max_results),
         fetcher=PageFetcher(UrlPolicy(), timeout=settings.timeout_seconds),
     )
 

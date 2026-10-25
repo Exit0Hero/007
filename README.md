@@ -17,8 +17,8 @@ This starter kit gives OpenCode a persistent engineering charter, product requir
 ## Target stack
 
 - Python 3.11+
-- OpenAI Python SDK / Responses API with function calling
-- Tavily Python SDK for web search
+- OpenAI Python SDK / Responses API with function calling (any OpenAI-compatible endpoint via `OPENAI_BASE_URL`, e.g. OpenRouter)
+- Web search via the Tavily Python SDK **or** Exa's HTTP API (no extra dependency)
 - Pydantic for validated data and configuration
 - python-dotenv for local configuration
 - pytest for tests
@@ -54,11 +54,12 @@ PYTHONPATH=src python -m atlas.main "..." --output report.md
 `src` must be on the path because the package has not been installed editable.
 
 Offline mode (the default) validates the request and configuration only; it
-performs no research and contacts no provider. With `ATLAS_MODE=live` and all
-three of `OPENAI_API_KEY`, `TAVILY_API_KEY`, and `ATLAS_MODEL` set, the CLI
-runs the bounded agent loop, writes the evidence-grounded Markdown report to
-`--output PATH` (or stdout), and prints run metadata (iterations, tool calls,
-and token usage when the provider reported it — otherwise explicitly
+performs no research and contacts no provider. With `ATLAS_MODE=live`,
+`OPENAI_API_KEY`, `ATLAS_MODEL`, and **one** of `TAVILY_API_KEY` or
+`EXA_API_KEY` set, the CLI runs the bounded agent loop, writes the
+evidence-grounded Markdown report to `--output PATH` (or stdout), and prints
+run metadata (iterations, tool calls, and token usage when the provider
+reported it — otherwise explicitly
 unavailable).
 
 ### Research depth (per-run overrides)
@@ -100,6 +101,9 @@ credentials (they skip cleanly when credentials are absent).
 Copy `.env.example` to `.env` and fill in real values only if you intend to
 enable `ATLAS_MODE=live`. `.env` is git-ignored. No model ID is provided as a
 default; `ATLAS_MODEL` must be set explicitly before live mode will start.
+`OPENAI_BASE_URL` is optional and points the model adapter at any
+OpenAI-compatible endpoint (Tavily is preferred for search when both search
+keys are present, otherwise Exa is used).
 
 ## Documentation map
 
@@ -123,7 +127,8 @@ default; `ATLAS_MODEL` must be set explicitly before live mode will start.
 ## Important status note
 
 `docs/STATUS.md` is the canonical current state and reflects only verified
-work. As of Sprint 6, the application exists and its offline suite passes, but
-**no live provider call has ever been made** in this environment — live model
-and search behaviour remains unverified. Do not read passing offline tests as
-proof of live research quality.
+work. As of Sprint 7b, live mode has been exercised end to end against
+OpenRouter (model) and Exa (search): the live test suite passes and a real
+CLI run produced a completed, citation-resolving report. Offline tests still
+do not prove answer quality — the offline benchmark in `docs/EVALUATION.md`
+measures determinism and structure, not accuracy.

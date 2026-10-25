@@ -31,9 +31,16 @@ ENV_TIMEOUT = "ATLAS_TIMEOUT_SECONDS"
 ENV_DEADLINE = "ATLAS_DEADLINE_SECONDS"
 ENV_OPENAI_KEY = "OPENAI_API_KEY"
 ENV_TAVILY_KEY = "TAVILY_API_KEY"
+ENV_EXA_KEY = "EXA_API_KEY"
+ENV_OPENAI_BASE_URL = "OPENAI_BASE_URL"
 
 #: Variables that must hold a non-empty value for the application to run live.
-LIVE_REQUIRED_ENV_VARS = (ENV_OPENAI_KEY, ENV_TAVILY_KEY, ENV_MODEL)
+#: The search credential is a one-of choice between Tavily and Exa, enforced
+#: separately in :meth:`Settings.from_env` (US-706).
+LIVE_REQUIRED_ENV_VARS = (ENV_OPENAI_KEY, ENV_MODEL)
+
+#: At least one of these must be present in live mode (US-706).
+LIVE_SEARCH_ENV_VARS = (ENV_TAVILY_KEY, ENV_EXA_KEY)
 
 _NUMERIC_FIELDS = (
     (ENV_MAX_ITERATIONS, "max_iterations", int),
@@ -45,6 +52,7 @@ _NUMERIC_FIELDS = (
 _SECRET_FIELDS = (
     (ENV_OPENAI_KEY, "openai_api_key"),
     (ENV_TAVILY_KEY, "tavily_api_key"),
+    (ENV_EXA_KEY, "exa_api_key"),
 )
 
 
@@ -76,6 +84,10 @@ class Settings(BaseModel):
     deadline_seconds: float = Field(default=DEFAULT_DEADLINE_SECONDS, gt=0.0, le=3600.0)
     openai_api_key: SecretStr | None = None
     tavily_api_key: SecretStr | None = None
+    exa_api_key: SecretStr | None = None
+    #: Optional OpenAI-compatible endpoint (e.g. OpenRouter); ``None`` keeps
+    #: the SDK default. Not a secret: a URL, never a credential (US-706).
+    openai_base_url: str | None = None
 
     @classmethod
     def from_env(cls, environ: Mapping[str, str] | None = None) -> Settings:
@@ -113,15 +125,32 @@ class Settings(BaseModel):
             if _is_present(raw):
                 data[field_name] = SecretStr(raw.strip())
 
+        raw_base_url = env.get(ENV_OPENAI_BASE_URL)
+        if _is_present(raw_base_url):
+            base_url = raw_base_url.strip()
+            if not (base_url.startswith("https://") or base_url.startswith("http://")):
+                raise ConfigurationError(
+                    f"{ENV_OPENAI_BASE_URL} must be an http:// or https:// URL."
+                )
+            data["openai_base_url"] = base_url
+
         try:
             settings = cls.model_validate(data)
         except ValidationError as exc:
             raise ConfigurationError(_summarize(exc)) from exc
 
         if settings.mode == "live":
-            missing = [name for name in LIVE_REQUIRED_ENV_VARS if not _is_present(env.get(name))]
-            if missing:
-                raise ConfigurationError("live mode requires " + ", ".join(missing) + " to be set.")
+            missing = [
+                name for name in (ENV_OPENAI_KEY, ENV_MODEL) if not _is_present(env.get(name))
+            ]
+            has_search_key = any(_is_present(env.get(name)) for name in LIVE_SEARCH_ENV_VARS)
+            if missing or not has_search_key:
+                parts = []
+                if missing:
+                    parts.append(", ".join(missing) + " to be set")
+                if not has_search_key:
+                    parts.append("one of " + " or ".join(LIVE_SEARCH_ENV_VARS) + " to be set")
+                raise ConfigurationError("live mode requires " + "; ".join(parts) + ".")
 
         return settings
 

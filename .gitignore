@@ -25,6 +25,7 @@ htmlcov/
 # Local research outputs
 outputs/
 reports/
+live_report.md
 
 # Editors and OS
 .idea/

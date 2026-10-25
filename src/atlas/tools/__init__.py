@@ -16,15 +16,22 @@ from atlas.tools.fetch import (
     UrlPolicy,
     extract_readable,
 )
-from atlas.tools.search import SearchProvider, TavilySearchProvider
+from atlas.tools.search import (
+    ExaSearchProvider,
+    SearchProvider,
+    TavilySearchProvider,
+    build_exa_provider,
+)
 
 __all__ = [
     "Destination",
+    "ExaSearchProvider",
     "FetchedPage",
     "PageFetcher",
     "SearchProvider",
     "TavilySearchProvider",
     "Transport",
     "UrlPolicy",
+    "build_exa_provider",
     "extract_readable",
 ]

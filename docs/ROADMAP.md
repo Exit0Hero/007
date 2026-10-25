@@ -149,6 +149,29 @@ Verification: agent-loop and component tests for each limit (iterations, request
 
 **Verification approach:** CLI tests asserting flag parsing, per-run override without mutating global configuration, rejection of out-of-range and non-numeric values with exit code 2, no research executed on rejection, and visibility of effective values in output — all with an injected fake runner (layer 1).
 
+### US-706 — Provider portability: Exa search provider and OpenAI-compatible base URL (Sprint 7b)
+
+**Context:** The user supplied credentials for Exa (search), Groq, and OpenRouter
+(model) — not Tavily or OpenAI. Live mode is currently impossible despite valid
+keys. Recorded as ADR-018.
+
+**Acceptance criteria:**
+
+1. Live mode accepts `EXA_API_KEY` as an alternative to `TAVILY_API_KEY`: exactly one of the two satisfies the search-credential requirement; neither set is still a configuration error naming both variables.
+2. An `ExaSearchProvider` implements the existing `SearchProvider` protocol — same bounded query validation, same `SearchResult` normalization, same `SearchProviderError` redaction guarantees as the Tavily provider.
+3. `OPENAI_BASE_URL` (optional) selects an OpenAI-compatible endpoint for the model adapter; when absent, behaviour is unchanged (the SDK default). The value must be an `http(s)` URL or configuration fails.
+4. Provider selection in the CLI is deterministic: Tavily when `TAVILY_API_KEY` is set, otherwise Exa.
+5. No new runtime dependency is added for Exa; the HTTP call goes through an injected transport so every test stays offline.
+6. A real end-to-end live run (OpenRouter model + Exa search) produces a report, or its honest failure is recorded — results are never faked.
+
+**Verification approach:** Offline unit tests for Exa normalization, bounds, and
+error redaction with a fake transport; config tests for the one-of credential
+rule and base-URL validation; CLI test for deterministic provider selection;
+one marked-`live` test exercising a real Exa call and a real end-to-end run
+(deselected by default like the rest of `tests/test_live.py`).
+
+**Status: implemented** — see ADR-018 for the delivered design and verification evidence.
+
 Verification approach for US-701 through US-705 is intentionally not specified. These stories have no sprint assignment and must gain acceptance criteria and a verification approach before they are scheduled.
 
 ## Backlog management rules

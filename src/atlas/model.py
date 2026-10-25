@@ -130,7 +130,14 @@ class OpenAIModelAdapter:
                 from openai import OpenAI
             except ImportError as exc:  # pragma: no cover - env dependent
                 raise ModelProviderError("the 'openai' package is not installed") from exc
-            client = OpenAI(timeout=timeout)
+            # Credentials and endpoint come from Settings when present; the SDK
+            # falls back to its own environment lookup otherwise (US-706).
+            kwargs: dict[str, Any] = {"timeout": timeout}
+            if settings.openai_base_url is not None:
+                kwargs["base_url"] = settings.openai_base_url
+            if settings.openai_api_key is not None:
+                kwargs["api_key"] = settings.openai_api_key.get_secret_value()
+            client = OpenAI(**kwargs)
         self._client = client
 
     def complete(

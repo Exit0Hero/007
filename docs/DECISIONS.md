@@ -176,6 +176,21 @@ Record meaningful decisions here. Do not treat proposals as finalized decisions 
 - **Consequences:** the application remains a local CLI with no persistence and no new dependencies.
 - **Revisit conditions:** if a real deployment target or a retention policy ever exists, US-702/704/705 can be rescheduled with proper criteria.
 
+## ADR-018 — Provider portability: Exa search provider and OpenAI-compatible base URL
+
+- **Status:** Accepted (US-706)
+- **Context:** The user supplied working credentials for **Exa** (search), **Groq**, and **OpenRouter** (model) — none of which are Tavily or OpenAI. Live mode required exactly `OPENAI_API_KEY` + `TAVILY_API_KEY`, so valid keys could not run the application. Acceptance criteria were written into `docs/ROADMAP.md` under US-706 before implementation.
+- **Decision:**
+  - Live mode now accepts **one of** `TAVILY_API_KEY` or `EXA_API_KEY` for search; neither set is still a configuration error that names both variables.
+  - `ExaSearchProvider` implements the existing `SearchProvider` protocol with the same bounded validation, `SearchResult` normalization, and API-key redaction as the Tavily provider. It posts to `https://api.exa.ai/search` with the minimal request shape (`query`, `numResults`, `contents.highlights`) through an injected transport — no new runtime dependency, all tests offline.
+  - `OPENAI_BASE_URL` (optional, must be http(s)) points the model adapter at any OpenAI-compatible endpoint; when unset, behaviour is unchanged. The adapter now passes `api_key`/`base_url` from `Settings` when present, falling back to the SDK's environment lookup.
+  - Provider selection is deterministic: **Tavily when configured, otherwise Exa**.
+  - `ATLAS_MODEL` is still never defaulted; `EXA_API_KEY` and `OPENAI_BASE_URL` join the set of `SecretStr`-protected / validated settings.
+- **Why not Groq:** Groq is OpenAI-compatible but serves only `/chat/completions`; Atlas's adapter speaks the **Responses API** (ADR-014). Supporting Groq would require a second model adapter — declined as unnecessary since OpenRouter's Responses endpoint works. The Groq key is stored locally and unused.
+- **Verification (executed, not assumed):** all three keys validated with real calls; `pytest -m live` → **4 passed** (model, usage, search+fetch, end-to-end research run) using OpenRouter + Exa; a real CLI run produced a **completed** report (`live_report.md`, exit 0) with resolving citations and honest evidence tiers.
+- **Consequences:** live mode is runnable in this environment without paid OpenAI/Tavily accounts. Answer *quality* remains unmeasured — the offline benchmark still refuses accuracy claims (PRD §10).
+- **Revisit conditions:** if a second *chat-completions-only* provider must be supported, add a distinct adapter rather than bending the Responses-based one.
+
 ## Open decisions from Sprint 0
 
 Resolved during Sprint 1 — see the "Sprint 0 decisions resolved in Sprint 1" section below.

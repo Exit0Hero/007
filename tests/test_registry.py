@@ -10,9 +10,9 @@ from __future__ import annotations
 import pytest
 from pydantic import BaseModel, ConfigDict, Field
 
-from atlas.errors import ToolValidationError
-from atlas.models import ToolCall
-from atlas.tools.registry import (
+from agent007.errors import ToolValidationError
+from agent007.models import ToolCall
+from agent007.tools.registry import (
     MAX_IDENTICAL_CALLS,
     MAX_TOOL_OUTPUT_CHARS,
     ToolRegistry,
@@ -289,7 +289,7 @@ def test_specs_instances_are_independent() -> None:
 
 
 def test_default_registry_registers_only_available_tools() -> None:
-    from atlas.config import Settings
+    from agent007.config import Settings
 
     class FakeSearch:
         def search(self, query: str, max_results: int | None = None):  # noqa: ARG001
@@ -304,8 +304,8 @@ def test_default_registry_registers_only_available_tools() -> None:
 
 
 def test_default_registry_formats_search_results() -> None:
-    from atlas.config import Settings
-    from atlas.models import SearchResult
+    from agent007.config import Settings
+    from agent007.models import SearchResult
 
     class FakeSearch:
         def search(self, query: str, max_results: int | None = None):  # noqa: ARG001
@@ -317,7 +317,7 @@ def test_default_registry_formats_search_results() -> None:
 
     reg = build_default_registry(Settings(), search=FakeSearch())
     observation = reg.execute(
-        ToolCall(call_id="c1", name="web_search", arguments={"query": "atlas"})
+        ToolCall(call_id="c1", name="web_search", arguments={"query": "007"})
     )
 
     assert observation.ok is True

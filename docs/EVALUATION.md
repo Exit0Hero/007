@@ -15,10 +15,10 @@ evaluation** against the configured providers.
 ## 1. Running the offline evaluation
 
 ```bash
-python -m atlas.evalrun run                 # all 24 cases
-python -m atlas.evalrun run --smoke         # three-case smoke subset
-python -m atlas.evalrun run --case EV-GEN-001 --case EV-SCI-001
-python -m atlas.evalrun list                # show case IDs, categories, difficulty
+python -m agent007.evalrun run                 # all 24 cases
+python -m agent007.evalrun run --smoke         # three-case smoke subset
+python -m agent007.evalrun run --case EV-GEN-001 --case EV-SCI-001
+python -m agent007.evalrun list                # show case IDs, categories, difficulty
 ```
 
 * Requires **no credentials**: offline runs build `Settings.from_env({})`, so
@@ -52,9 +52,9 @@ Live execution requires **explicit opt-in** and makes real, billable API
 calls. Always smoke-test first:
 
 ```bash
-python -m atlas.evalrun run --live --smoke            # first case of 3 categories
-python -m atlas.evalrun run --live --case EV-GEN-001  # a single case
-python -m atlas.evalrun run --live                    # the whole dataset (24 cases)
+python -m agent007.evalrun run --live --smoke            # first case of 3 categories
+python -m agent007.evalrun run --live --case EV-GEN-001  # a single case
+python -m agent007.evalrun run --live                    # the whole dataset (24 cases)
 ```
 
 Configuration (names only — values are never printed or written to artifacts):
@@ -121,7 +121,7 @@ A resolvable URL never implies support. To record a review:
 4. Re-score without re-running anything:
 
 ```bash
-python -m atlas.evalrun summarize \
+python -m agent007.evalrun summarize \
   --results evaluation_results/live_smoke/eval_results.json \
   --reviews reviews.json
 ```
@@ -173,7 +173,7 @@ not be counted), and `value`. **A metric with no valid observations reports
 ### 6.1 Offline baseline — 24 cases (executed 2026-10-25)
 
 ```bash
-python -m atlas.evalrun run --out evaluation_results/offline_baseline
+python -m agent007.evalrun run --out evaluation_results/offline_baseline
 # exit 2 (EV-INC-003 is scripted to fail at the provider by design)
 ```
 
@@ -198,7 +198,7 @@ python -m atlas.evalrun run --out evaluation_results/offline_baseline
 ### 6.2 Live smoke — 3 cases (executed 2026-10-25, user-approved)
 
 ```bash
-python -m atlas.evalrun run --live --smoke --out evaluation_results/live_smoke
+python -m agent007.evalrun run --live --smoke --out evaluation_results/live_smoke
 # model nvidia/nemotron-3.5-lightning:free via OPENAI_BASE_URL, search: exa
 # bounds applied: max_iterations=8, max_results=5, deadline=120s
 ```

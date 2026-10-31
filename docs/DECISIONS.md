@@ -196,7 +196,7 @@ Record meaningful decisions here. Do not treat proposals as finalized decisions 
 - **Status:** Accepted (Sprint 8, US-801 … US-808)
 - **Context:** Sprints 0–7b verified structure, bounds, and honesty, but *answer quality* was unmeasured — the gap recorded in `docs/STATUS.md`. The brief required a reproducible evaluation that never invents numbers. Acceptance criteria were written into `docs/ROADMAP.md` before implementation.
 - **Decision:**
-  - **One dataset, two runners.** `evaluation_dataset/cases.json` (24 cases, 8 required categories, fixtures included) is version-controlled *outside* `src/`. `python -m atlas.evalrun` runs it offline by default; `--live` is the only way to reach real providers.
+  - **One dataset, two runners.** `evaluation_dataset/cases.json` (24 cases, 8 required categories, fixtures included) is version-controlled *outside* `src/`. `python -m agent007.evalrun` runs it offline by default; `--live` is the only way to reach real providers.
   - **Offline runs ignore the environment.** `Settings.from_env({})` plus per-case fixture providers make the offline path credential-free, network-free, and reproducible; a test blocks `socket.socket.connect` to prove no external call happens.
   - **Three-level citation verdicts.** `resolves` and `excerpt_matches_evidence` are deterministic; `supports_claim` is `needs_review` until a human records it — a resolving URL never implies support.
   - **Reuse over duplication.** `evaluate()` (Sprint 6) backs the `status_honesty` check; `ReportBuilder`'s excerpt rule was extracted into public `excerpt_support_kind()` so builder and evaluator share one implementation; citation resolution stays in `SourceRegistry.resolve`.

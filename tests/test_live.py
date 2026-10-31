@@ -49,7 +49,7 @@ def _have_search() -> bool:
 
 def _search_provider(max_results: int):
     """Build the configured search provider for a live test."""
-    from atlas.tools.search import build_exa_provider, build_tavily_provider
+    from agent007.tools.search import build_exa_provider, build_tavily_provider
 
     if _present(TAVILY_KEY):
         return build_tavily_provider(TAVILY_KEY, default_max_results=max_results)
@@ -62,9 +62,9 @@ def _search_provider(max_results: int):
 )
 def test_live_model_call_produces_a_turn() -> None:
     """One real model call; asserts only shape, never content quality."""
-    from atlas.config import Settings
-    from atlas.model import OpenAIModelAdapter
-    from atlas.tools.registry import ToolRegistry
+    from agent007.config import Settings
+    from agent007.model import OpenAIModelAdapter
+    from agent007.tools.registry import ToolRegistry
 
     adapter = OpenAIModelAdapter(Settings(model_name=MODEL))
 
@@ -78,9 +78,9 @@ def test_live_model_call_produces_a_turn() -> None:
     reason="OPENAI_API_KEY / ATLAS_MODEL not configured",
 )
 def test_live_model_reports_usage_when_available() -> None:
-    from atlas.config import Settings
-    from atlas.model import OpenAIModelAdapter
-    from atlas.tools.registry import ToolRegistry
+    from agent007.config import Settings
+    from agent007.model import OpenAIModelAdapter
+    from agent007.tools.registry import ToolRegistry
 
     adapter = OpenAIModelAdapter(Settings(model_name=MODEL))
 
@@ -97,7 +97,7 @@ def test_live_model_reports_usage_when_available() -> None:
 @pytest.mark.skipif(not (_have_openai() and _have_search()), reason="live keys not configured")
 def test_live_search_and_fetch_register_sources() -> None:
     """One real search; asserts sources register, not result quality."""
-    from atlas.sources import SourceRegistry
+    from agent007.sources import SourceRegistry
 
     provider = _search_provider(2)
     results = provider.search("Python programming language", 2)
@@ -116,10 +116,10 @@ def test_live_search_and_fetch_register_sources() -> None:
 )
 def test_live_end_to_end_research_run() -> None:
     """One full live run; asserts bounds and honest status, not answer quality."""
-    from atlas.config import Settings
-    from atlas.model import OpenAIModelAdapter
-    from atlas.pipeline import run_research
-    from atlas.tools.fetch import PageFetcher, UrlPolicy
+    from agent007.config import Settings
+    from agent007.model import OpenAIModelAdapter
+    from agent007.pipeline import run_research
+    from agent007.tools.fetch import PageFetcher, UrlPolicy
 
     settings = Settings.from_env()
     outcome = run_research(

@@ -27,7 +27,7 @@ from html.parser import HTMLParser
 from typing import Protocol
 from urllib.parse import urljoin, urlsplit
 
-from atlas.errors import FetchError, ToolValidationError
+from agent007.errors import FetchError, ToolValidationError
 
 try:
     from requests.adapters import HTTPAdapter
@@ -65,7 +65,7 @@ MAX_TEXT_CHARS = 100_000
 DEFAULT_TIMEOUT_SECONDS = 30.0
 
 #: Identifies the client to servers. Contains no credentials or internal detail.
-USER_AGENT = "atlas-research-agent/0.1 (+local research CLI)"
+USER_AGENT = "007/0.1 (+local research CLI)"
 
 #: Hostnames always refused, before any DNS lookup.
 _ALWAYS_FORBIDDEN_HOSTS = frozenset({"localhost", "localhost.localdomain", "ip6-localhost"})

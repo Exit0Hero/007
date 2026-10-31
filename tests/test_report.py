@@ -9,9 +9,9 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from atlas.errors import CitationValidationError
-from atlas.models import ResearchState, TerminationReason, ToolObservation
-from atlas.report import (
+from agent007.errors import CitationValidationError
+from agent007.models import ResearchState, TerminationReason, ToolObservation
+from agent007.report import (
     MAX_EXCERPT_CHARS,
     MAX_FINDINGS,
     Evidence,
@@ -19,7 +19,7 @@ from atlas.report import (
     ReportBuilder,
     build_report_from_state,
 )
-from atlas.sources import SourceRegistry
+from agent007.sources import SourceRegistry
 
 PAGE_TEXT = (
     "Atlas is a single-agent research assistant. It searches the web, reads "

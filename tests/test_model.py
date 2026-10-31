@@ -17,9 +17,9 @@ from types import SimpleNamespace
 import pytest
 from pydantic import ValidationError
 
-from atlas.config import Settings
-from atlas.errors import ModelProviderError, ToolValidationError
-from atlas.model import (
+from agent007.config import Settings
+from agent007.errors import ModelProviderError, ToolValidationError
+from agent007.model import (
     MAX_FINAL_TEXT_CHARS,
     REPLAY_OBSERVATION_CHARS,
     FakeModelAdapter,
@@ -28,8 +28,8 @@ from atlas.model import (
     ToolDefinition,
     _redact,
 )
-from atlas.models import ToolCall, ToolObservation
-from atlas.tools.registry import ToolRegistry
+from agent007.models import ToolCall, ToolObservation
+from agent007.tools.registry import ToolRegistry
 
 
 class FakeResponses:
@@ -163,7 +163,7 @@ def test_tool_calls_are_parsed_including_raw_arguments() -> None:
         type="function_call",
         call_id="call_1",
         name="web_search",
-        arguments='{"query": "atlas"}',
+        arguments='{"query": "007"}',
     )
     adapter, _ = adapter_with(
         response=SimpleNamespace(output=[function_call], output_text="", usage=None)
@@ -175,8 +175,8 @@ def test_tool_calls_are_parsed_including_raw_arguments() -> None:
     call = turn.tool_calls[0]
     assert call.call_id == "call_1"
     assert call.name == "web_search"
-    assert call.arguments == {"query": "atlas"}
-    assert call.raw_arguments == '{"query": "atlas"}'
+    assert call.arguments == {"query": "007"}
+    assert call.raw_arguments == '{"query": "007"}'
 
 
 def test_non_function_call_output_items_are_ignored() -> None:

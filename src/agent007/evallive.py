@@ -21,14 +21,14 @@ offline suite exercises it only through refusal tests with fake settings.
 
 from __future__ import annotations
 
-from atlas.config import Settings
-from atlas.errors import ConfigurationError
-from atlas.evalreport import (
+from agent007.config import Settings
+from agent007.errors import ConfigurationError
+from agent007.evalreport import (
     CaseResult,
     provider_failure_result,
     result_from_outcome,
 )
-from atlas.evalset import EvalCase
+from agent007.evalset import EvalCase
 
 #: Limitations attached to every live evaluation result (US-804/US-806).
 LIVE_EVALUATION_LIMITATIONS: tuple[str, ...] = (
@@ -111,10 +111,10 @@ def run_live_evaluation(
     assert settings.model_name is not None  # noqa: S101 - guarded above
 
     # Providers are built only after the opt-in gate has passed.
-    from atlas.main import _build_search_provider
-    from atlas.model import OpenAIModelAdapter
-    from atlas.pipeline import run_research
-    from atlas.tools.fetch import PageFetcher, UrlPolicy
+    from agent007.main import _build_search_provider
+    from agent007.model import OpenAIModelAdapter
+    from agent007.pipeline import run_research
+    from agent007.tools.fetch import PageFetcher, UrlPolicy
 
     secrets = live_secrets(settings)
     model = OpenAIModelAdapter(settings, timeout=settings.timeout_seconds)

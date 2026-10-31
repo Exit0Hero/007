@@ -86,7 +86,7 @@ Responses API. Acceptance criteria were written before implementation.
 | `src/atlas/evalreport.py` | case results, human reviews, JSON + Markdown artifacts; a fresh result **cannot** claim verified accuracy |
 | `src/atlas/evalmetrics.py` | metrics with numerator/denominator/unknown; `unavailable` (never `0`) without observations; cost always unavailable |
 | `src/atlas/evallive.py` | opt-in, bounded, single-attempt live runner with credential redaction |
-| `src/atlas/evalrun.py` | `python -m atlas.evalrun run\|summarize\|list`, exit codes 0/2/4/5 |
+| `src/atlas/evalrun.py` | `python -m agent007.evalrun run\|summarize\|list`, exit codes 0/2/4/5 |
 
 ---
 
@@ -100,9 +100,9 @@ All run on the committed tree:
 | Lint | `ruff check .` | All checks passed, exit 0 |
 | Format | `ruff format --check .` | exit 0 |
 | **Live suite** | `pytest -m live` (OpenRouter + Exa) | **4 passed** — model, usage, search+fetch, full end-to-end run |
-| **Live CLI run** | `python -m atlas.main "..." -o live_report.md` | exit 0; completed report, sources resolve, evidence tiers honest, usage 1475 in / 517 out |
-| **Offline evaluation (Sprint 8)** | `python -m atlas.evalrun run` | 24 cases, exit 2 by design; **0 deterministic check failures**, 46/46 citations and excerpts verified, 1 scripted provider failure, all 24 accuracy fields `needs_review` |
-| **Live evaluation smoke (Sprint 8, approved)** | `python -m atlas.evalrun run --live --smoke` | 3 cases, exit 2; 2/3 completed, 21/21 citations resolved, 0 provider failures, 5561 total tokens, 0 reviews recorded, no secrets in artifacts |
+| **Live CLI run** | `python -m agent007.main "..." -o live_report.md` | exit 0; completed report, sources resolve, evidence tiers honest, usage 1475 in / 517 out |
+| **Offline evaluation (Sprint 8)** | `python -m agent007.evalrun run` | 24 cases, exit 2 by design; **0 deterministic check failures**, 46/46 citations and excerpts verified, 1 scripted provider failure, all 24 accuracy fields `needs_review` |
+| **Live evaluation smoke (Sprint 8, approved)** | `python -m agent007.evalrun run --live --smoke` | 3 cases, exit 2; 2/3 completed, 21/21 citations resolved, 0 provider failures, 5561 total tokens, 0 reviews recorded, no secrets in artifacts |
 | Credential checks | direct API pings | Exa ✓, Groq ✓, OpenRouter ✓ incl. `/responses` |
 | Offline benchmark | `run_offline_benchmark()` | **3/3** questions met all 4 documented criteria (see `docs/EVALUATION.md`) |
 | Secret scan | grep of full git history (`git log -p --all`) | 0 secret-like additions |
@@ -220,7 +220,7 @@ ea55e77 Core: error taxonomy, validated settings, models, CLI entry point
 cd ~/Desktop/007/atlas_opencode_starter_kit/atlas_opencode_starter
 
 # Offline validation (default, no credentials needed)
-PYTHONPATH=src python -m atlas.main "What is retrieval-augmented generation?"
+PYTHONPATH=src python -m agent007.main "What is retrieval-augmented generation?"
 
 # Quality gates
 .venv/bin/python -m pytest        # 585 passed, 4 deselected
@@ -228,9 +228,9 @@ ruff check .                      # exit 0
 ruff format --check .             # exit 0
 
 # Research-quality evaluation (Sprint 8) — offline by default
-PYTHONPATH=src python -m atlas.evalrun run --smoke     # 3 cases, no credentials
-PYTHONPATH=src python -m atlas.evalrun run             # all 24 cases
-PYTHONPATH=src python -m atlas.evalrun list
+PYTHONPATH=src python -m agent007.evalrun run --smoke     # 3 cases, no credentials
+PYTHONPATH=src python -m agent007.evalrun run             # all 24 cases
+PYTHONPATH=src python -m agent007.evalrun list
 
 # Live mode — keys are already in the git-ignored .env; export them:
 set -a; source .env; set +a
@@ -239,8 +239,8 @@ export ATLAS_MODE=live OPENAI_API_KEY="$OPENROUTER_API_KEY" \
        ATLAS_MODEL=nvidia/nemotron-3.5-lightning:free
 
 .venv/bin/python -m pytest -m live        # 4 passed
-PYTHONPATH=src python -m atlas.main "Your question" --output report.md
-PYTHONPATH=src python -m atlas.evalrun run --live --smoke   # opt-in, 3 cases, bounded
+PYTHONPATH=src python -m agent007.main "Your question" --output report.md
+PYTHONPATH=src python -m agent007.evalrun run --live --smoke   # opt-in, 3 cases, bounded
 ```
 
 **Current state:** the verification gap that remains is *factual* answer

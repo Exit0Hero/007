@@ -17,7 +17,7 @@ from __future__ import annotations
 import statistics
 from dataclasses import dataclass
 
-from atlas.evalreport import CaseResult
+from agent007.evalreport import CaseResult
 
 #: Statuses that count as "a review actually happened".
 _REVIEWED = ("pass", "fail")

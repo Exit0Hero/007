@@ -9,11 +9,11 @@ from __future__ import annotations
 import contextlib
 import io
 
-from atlas.main import EXIT_OK, main
-from atlas.models import ResearchState, TerminationReason, TokenUsage, ToolObservation
-from atlas.pipeline import ResearchOutcome
-from atlas.report import Report
-from atlas.sources import SourceRegistry
+from agent007.main import EXIT_OK, main
+from agent007.models import ResearchState, TerminationReason, TokenUsage, ToolObservation
+from agent007.pipeline import ResearchOutcome
+from agent007.report import Report
+from agent007.sources import SourceRegistry
 
 LIVE_ENV = {
     "ATLAS_MODE": "live",

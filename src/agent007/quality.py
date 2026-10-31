@@ -21,7 +21,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
-from atlas.evaluation import RunMetrics, evaluate
+from agent007.evaluation import RunMetrics, evaluate
 
 CheckStatus = Literal["pass", "fail", "unknown", "needs_review"]
 
@@ -158,7 +158,7 @@ def provider_failure(state: object) -> bool:
     failed (refusals such as unknown-tool or duplicate suppression are policy
     outcomes, not provider failures).
     """
-    from atlas.models import TerminationReason
+    from agent007.models import TerminationReason
 
     if state.termination_reason is TerminationReason.MODEL_ERROR:
         return True
@@ -187,7 +187,7 @@ def run_checks(
             absent, that check reports ``unknown`` rather than a pass.
         max_iterations: The iteration bound used by the Sprint 6 criteria.
     """
-    from atlas.report import excerpt_support_kind
+    from agent007.report import excerpt_support_kind
 
     markdown = report.to_markdown()
     records = {record.id: record for record in registry.records()}
@@ -287,7 +287,7 @@ def _evidence_refs(report: object, registry: object) -> CheckResult:
 
 
 def _excerpt_support(report: object, records: dict[str, object]) -> CheckResult:
-    from atlas.report import excerpt_support_kind
+    from agent007.report import excerpt_support_kind
 
     problems: list[str] = []
     checked = 0
@@ -380,7 +380,7 @@ def _citation_validation_replay(
     A report constructed outside the builder could still carry a fabricated
     reference; this check proves the validation would have rejected it.
     """
-    from atlas.report import excerpt_support_kind
+    from agent007.report import excerpt_support_kind
 
     problems: list[str] = []
     for finding in report.findings:
@@ -405,7 +405,7 @@ def _citation_validation_replay(
 
 
 def _citation_verdicts(report: object, records: dict[str, object]) -> list[CitationVerdict]:
-    from atlas.report import excerpt_support_kind
+    from agent007.report import excerpt_support_kind
 
     verdicts: list[CitationVerdict] = []
     for source_id in cited_source_ids(report):

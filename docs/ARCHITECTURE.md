@@ -61,7 +61,7 @@ Report assembly, source registry, citation validation, limitation disclosure, an
 ## 4. Proposed initial repository structure
 
 ```text
-atlas-research-agent/
+007/
 ├── AGENTS.md
 ├── README.md
 ├── requirements.txt

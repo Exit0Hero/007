@@ -2,11 +2,11 @@
 
 Entry point::
 
-    python -m atlas.evalrun run                 # offline, no credentials, no network
-    python -m atlas.evalrun run --smoke         # three-case smoke subset (offline)
-    python -m atlas.evalrun run --live --smoke  # opt-in live subset (US-805)
-    python -m atlas.evalrun summarize --results <eval_results.json> [--reviews <r.json>]
-    python -m atlas.evalrun list
+    python -m agent007.evalrun run                 # offline, no credentials, no network
+    python -m agent007.evalrun run --smoke         # three-case smoke subset (offline)
+    python -m agent007.evalrun run --live --smoke  # opt-in live subset (US-805)
+    python -m agent007.evalrun summarize --results <eval_results.json> [--reviews <r.json>]
+    python -m agent007.evalrun list
 
 Offline runs build providers exclusively from each case's declarative fixture
 (fake model script + fake search corpus): nothing reads the environment
@@ -26,10 +26,10 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Literal
 
-from atlas.config import Settings
-from atlas.errors import AtlasError, ConfigurationError, DatasetError
-from atlas.evalmetrics import compute_metrics
-from atlas.evalreport import (
+from agent007.config import Settings
+from agent007.errors import AtlasError, ConfigurationError, DatasetError
+from agent007.evalmetrics import compute_metrics
+from agent007.evalreport import (
     CaseResult,
     EvalRun,
     apply_reviews,
@@ -38,7 +38,7 @@ from atlas.evalreport import (
     result_from_outcome,
     utc_now,
 )
-from atlas.evalset import (
+from agent007.evalset import (
     EvalCase,
     build_fixture_model,
     build_fixture_search,
@@ -62,7 +62,7 @@ def evaluate_case_offline(case: EvalCase, settings: Settings) -> CaseResult:
     Never raises for a fixture/provider problem: a failure is recorded as a
     provider failure so it can never be mistaken for a quality pass.
     """
-    from atlas.pipeline import run_research
+    from agent007.pipeline import run_research
 
     try:
         outcome = run_research(
@@ -233,7 +233,7 @@ def _cmd_run(args: argparse.Namespace) -> int:
     if args.live:
         from dotenv import load_dotenv
 
-        from atlas.evallive import require_live_opt_in, run_live_evaluation, search_provider_label
+        from agent007.evallive import require_live_opt_in, run_live_evaluation, search_provider_label
 
         load_dotenv()
         settings = Settings.from_env()  # real environment, live validation
@@ -295,7 +295,7 @@ def _cmd_list(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="python -m atlas.evalrun",
+        prog="python -m agent007.evalrun",
         description="Run and summarize the Atlas research-quality evaluation (Sprint 8).",
     )
     sub = parser.add_subparsers(dest="command", required=True)

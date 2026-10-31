@@ -12,7 +12,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
-from atlas.errors import InvalidRequestError
+from agent007.errors import InvalidRequestError
 
 #: Maximum accepted question length in characters. Documented default; see
 #: ``docs/PRD.md`` FR-01 and ``README.md``.

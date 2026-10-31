@@ -13,7 +13,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, ValidationError
 
-from atlas.errors import ConfigurationError
+from agent007.errors import ConfigurationError
 
 Mode = Literal["offline", "live"]
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 import pytest
 from pydantic import SecretStr
 
-from atlas.config import (
+from agent007.config import (
     ENV_EXA_KEY,
     ENV_MODE,
     ENV_MODEL,
@@ -20,10 +20,10 @@ from atlas.config import (
     ENV_TAVILY_KEY,
     Settings,
 )
-from atlas.errors import ConfigurationError
-from atlas.main import _build_search_provider
-from atlas.model import OpenAIModelAdapter
-from atlas.tools.search import ExaSearchProvider, TavilySearchProvider
+from agent007.errors import ConfigurationError
+from agent007.main import _build_search_provider
+from agent007.model import OpenAIModelAdapter
+from agent007.tools.search import ExaSearchProvider, TavilySearchProvider
 
 SECRET = "sk-live-placeholder-000"
 EXA_KEY = "exa-live-placeholder-000"

@@ -13,9 +13,9 @@ from typing import Any
 
 import pytest
 
-from atlas.errors import SearchProviderError, ToolValidationError
-from atlas.models import MAX_SNIPPET_CHARS
-from atlas.tools.search import (
+from agent007.errors import SearchProviderError, ToolValidationError
+from agent007.models import MAX_SNIPPET_CHARS
+from agent007.tools.search import (
     EXA_SEARCH_URL,
     ExaSearchProvider,
     ExaTransportError,

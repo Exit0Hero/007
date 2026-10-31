@@ -18,9 +18,9 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
-from atlas.errors import CitationValidationError
-from atlas.models import ResearchState, TerminationReason
-from atlas.sources import SourceRecord, SourceRegistry
+from agent007.errors import CitationValidationError
+from agent007.models import ResearchState, TerminationReason
+from agent007.sources import SourceRecord, SourceRegistry
 
 #: Maximum characters of any single evidence excerpt in a report.
 MAX_EXCERPT_CHARS = 600

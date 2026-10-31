@@ -8,16 +8,16 @@ from __future__ import annotations
 
 import pytest
 
-from atlas.config import Settings
-from atlas.errors import CitationValidationError
-from atlas.evalreport import result_from_outcome
-from atlas.evalset import build_fixture_model, build_fixture_search, load_dataset
-from atlas.evaluation import RunMetrics, benchmark_fixtures, run_benchmark
-from atlas.models import ResearchState, TerminationReason, ToolObservation
-from atlas.pipeline import run_research
-from atlas.quality import CHECK_IDS, cited_source_ids, provider_failure, run_checks
-from atlas.report import Finding, Report, ReportBuilder
-from atlas.sources import SourceRegistry
+from agent007.config import Settings
+from agent007.errors import CitationValidationError
+from agent007.evalreport import result_from_outcome
+from agent007.evalset import build_fixture_model, build_fixture_search, load_dataset
+from agent007.evaluation import RunMetrics, benchmark_fixtures, run_benchmark
+from agent007.models import ResearchState, TerminationReason, ToolObservation
+from agent007.pipeline import run_research
+from agent007.quality import CHECK_IDS, cited_source_ids, provider_failure, run_checks
+from agent007.report import Finding, Report, ReportBuilder
+from agent007.sources import SourceRegistry
 
 SETTINGS = Settings.from_env({})
 

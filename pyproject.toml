@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "atlas-research-agent"
+name = "007"
 version = "0.1.0"
 description = "Single-agent research assistant that produces evidence-grounded Markdown reports"
 readme = "README.md"
@@ -20,7 +20,7 @@ dev = [
 ]
 
 [project.scripts]
-atlas = "atlas.main:main"
+007 = "agent007.main:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -23,14 +23,14 @@ from typing import Any
 from pydantic import BaseModel, ConfigDict, ValidationError
 from pydantic import Field as PField
 
-from atlas.config import Settings
-from atlas.errors import (
+from agent007.config import Settings
+from agent007.errors import (
     AtlasError,
     FetchError,
     SearchProviderError,
     ToolValidationError,
 )
-from atlas.models import MAX_QUERY_LENGTH, ToolCall, ToolObservation
+from agent007.models import MAX_QUERY_LENGTH, ToolCall, ToolObservation
 
 #: Maximum characters of any tool result handed back to the model.
 MAX_TOOL_OUTPUT_CHARS = 4000

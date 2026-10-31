@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from atlas.config import (
+from agent007.config import (
     DEFAULT_DEADLINE_SECONDS,
     DEFAULT_MAX_ITERATIONS,
     DEFAULT_MAX_RESULTS,
@@ -20,7 +20,7 @@ from atlas.config import (
     ENV_TIMEOUT,
     Settings,
 )
-from atlas.errors import ConfigurationError
+from agent007.errors import ConfigurationError
 
 SECRET = "sk-super-secret-value-do-not-leak"
 

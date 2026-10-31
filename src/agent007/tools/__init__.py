@@ -8,7 +8,7 @@ registry by name; there is no dynamic import, ``eval``, or arbitrary dispatch
 
 from __future__ import annotations
 
-from atlas.tools.fetch import (
+from agent007.tools.fetch import (
     Destination,
     FetchedPage,
     PageFetcher,
@@ -16,7 +16,7 @@ from atlas.tools.fetch import (
     UrlPolicy,
     extract_readable,
 )
-from atlas.tools.search import (
+from agent007.tools.search import (
     ExaSearchProvider,
     SearchProvider,
     TavilySearchProvider,

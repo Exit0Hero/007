@@ -17,8 +17,8 @@ import json
 from collections.abc import Callable, Mapping, Sequence
 from typing import Any, Protocol
 
-from atlas.errors import SearchProviderError, ToolValidationError
-from atlas.models import MAX_QUERY_LENGTH, MAX_SNIPPET_CHARS, SearchResult
+from agent007.errors import SearchProviderError, ToolValidationError
+from agent007.models import MAX_QUERY_LENGTH, MAX_SNIPPET_CHARS, SearchResult
 
 #: Absolute ceiling on results returned by any single call, regardless of input.
 MAX_RESULTS_PER_CALL = 20

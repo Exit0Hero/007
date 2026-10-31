@@ -9,8 +9,8 @@ from __future__ import annotations
 
 import pytest
 
-from atlas.errors import FetchError, ToolValidationError
-from atlas.tools.fetch import (
+from agent007.errors import FetchError, ToolValidationError
+from agent007.tools.fetch import (
     ALLOWED_CONTENT_TYPES,
     MAX_REDIRECTS,
     Destination,

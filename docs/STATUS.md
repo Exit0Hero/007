@@ -19,10 +19,10 @@
 | Lint | `ruff check .` | `All checks passed!`, exit 0 |
 | Format | `ruff format --check .` | exit 0 |
 | **Live suite** | `pytest -m live` (OpenRouter + Exa creds) | **4 passed** in 19.2s — first live model call, live search, live end-to-end run |
-| **Live CLI run** | `python -m atlas.main "..." --output live_report.md` | exit 0; completed report, 6+ sources, citations resolve, evidence tiers honest, token usage reported (1475 in / 517 out) |
+| **Live CLI run** | `python -m agent007.main "..." --output live_report.md` | exit 0; completed report, 6+ sources, citations resolve, evidence tiers honest, token usage reported (1475 in / 517 out) |
 | Offline benchmark | `run_offline_benchmark()` | 3/3 representative questions met all 4 documented criteria (see `docs/EVALUATION.md`) |
-| **Offline evaluation** | `python -m atlas.evalrun run` (24 cases) | exit 2 by design; **0 deterministic check failures**, 1 scripted provider failure, 46/46 citations resolved, 46/46 excerpts verified, all 24 accuracy fields `needs_review` |
-| **Live evaluation smoke** | `python -m atlas.evalrun run --live --smoke` (3 cases, user-approved) | exit 2; 2/3 completed, 21/21 citations resolved, 0 provider failures, tokens 5561 total, no reviews recorded, no secrets in artifacts |
+| **Offline evaluation** | `python -m agent007.evalrun run` (24 cases) | exit 2 by design; **0 deterministic check failures**, 1 scripted provider failure, 46/46 citations resolved, 46/46 excerpts verified, all 24 accuracy fields `needs_review` |
+| **Live evaluation smoke** | `python -m agent007.evalrun run --live --smoke` (3 cases, user-approved) | exit 2; 2/3 completed, 21/21 citations resolved, 0 provider failures, tokens 5561 total, no reviews recorded, no secrets in artifacts |
 | Credential checks | direct API pings | Exa search ✓, Groq generation ✓, OpenRouter generation ✓, OpenRouter `/responses` ✓ |
 | Secret scan | grep over `git log -p --all` and the committed evaluation artifacts | no secret-like patterns committed; `.env` git-ignored |
 

@@ -22,15 +22,15 @@ from collections.abc import Mapping, Sequence
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from atlas import __version__
-from atlas.config import Settings
-from atlas.errors import (
+from agent007 import __version__
+from agent007.config import Settings
+from agent007.errors import (
     AtlasError,
     ConfigurationError,
     InvalidRequestError,
     ModelProviderError,
 )
-from atlas.models import ResearchRequest
+from agent007.models import ResearchRequest
 
 EXIT_OK = 0
 EXIT_USAGE = 2
@@ -41,7 +41,7 @@ EXIT_RESEARCH_INCOMPLETE = 5
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="atlas",
+        prog="007",
         description="Research a question and produce an evidence-grounded Markdown report.",
     )
     parser.add_argument("question", help="The research question to investigate.")
@@ -266,7 +266,7 @@ def _depth_line(settings: Settings) -> str:
 
 def _build_search_provider(settings: Settings) -> object:
     """Pick the search provider deterministically (US-706): Tavily, else Exa."""
-    from atlas.tools.search import build_exa_provider, build_tavily_provider
+    from agent007.tools.search import build_exa_provider, build_tavily_provider
 
     if settings.tavily_api_key is not None:
         return build_tavily_provider(
@@ -288,9 +288,9 @@ def _build_live_runner(settings: Settings, err: object) -> object | None:
     provider problem here is reported as a configuration error, never as a
     partial research result.
     """
-    from atlas.model import OpenAIModelAdapter
-    from atlas.pipeline import run_research
-    from atlas.tools.fetch import PageFetcher, UrlPolicy
+    from agent007.model import OpenAIModelAdapter
+    from agent007.pipeline import run_research
+    from agent007.tools.fetch import PageFetcher, UrlPolicy
 
     try:
         # Deterministic selection (US-706): Tavily when configured, else Exa.

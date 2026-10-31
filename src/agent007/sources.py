@@ -24,7 +24,7 @@ from urllib.parse import urlsplit, urlunsplit
 
 from pydantic import BaseModel, ConfigDict
 
-from atlas.errors import ToolValidationError
+from agent007.errors import ToolValidationError
 
 #: Maximum characters retained from a search snippet stored on a source.
 MAX_STORED_SNIPPET_CHARS = 1000

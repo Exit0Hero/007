@@ -10,11 +10,11 @@ from __future__ import annotations
 
 import json
 
-from atlas.config import Settings
-from atlas.model import FakeModelAdapter, ModelTurn
-from atlas.models import SearchResult, ToolCall
-from atlas.pipeline import run_research
-from atlas.tools.fetch import FetchedPage
+from agent007.config import Settings
+from agent007.model import FakeModelAdapter, ModelTurn
+from agent007.models import SearchResult, ToolCall
+from agent007.pipeline import run_research
+from agent007.tools.fetch import FetchedPage
 
 PAGE_TEXT = (
     "Atlas is a single-agent research assistant. It searches the web, reads "
@@ -147,7 +147,7 @@ def test_search_only_run_marks_snippet_evidence_as_a_limitation() -> None:
 
 
 def test_provider_error_becomes_a_partial_report_not_a_crash() -> None:
-    from atlas.errors import SearchProviderError
+    from agent007.errors import SearchProviderError
 
     class FailingSearch:
         def search(self, query: str, max_results: int | None = None) -> list[SearchResult]:
@@ -198,7 +198,7 @@ def test_iteration_bounded_run_still_produces_a_partial_report() -> None:
 
 
 def test_duplicate_searches_are_suppressed_by_the_pipeline() -> None:
-    from atlas.tools.registry import MAX_IDENTICAL_CALLS
+    from agent007.tools.registry import MAX_IDENTICAL_CALLS
 
     same = [search_call(f"call_{i}") for i in range(6)]
     search = FakeSearch(SearchResult(title="T", url="https://example.com/x", snippet="s"))

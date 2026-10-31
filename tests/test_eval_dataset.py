@@ -12,8 +12,8 @@ from typing import Any
 
 import pytest
 
-from atlas.errors import DatasetError, SearchProviderError
-from atlas.evalset import (
+from agent007.errors import DatasetError, SearchProviderError
+from agent007.evalset import (
     REQUIRED_CATEGORIES,
     build_fixture_model,
     build_fixture_search,

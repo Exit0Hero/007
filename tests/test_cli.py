@@ -13,14 +13,14 @@ from pathlib import Path
 
 import pytest
 
-from atlas.config import ENV_MODE, ENV_MODEL, ENV_OPENAI_KEY, ENV_TAVILY_KEY
-from atlas.main import (
+from agent007.config import ENV_MODE, ENV_MODEL, ENV_OPENAI_KEY, ENV_TAVILY_KEY
+from agent007.main import (
     EXIT_CONFIGURATION_ERROR,
     EXIT_INVALID_REQUEST,
     EXIT_OK,
     main,
 )
-from atlas.models import MAX_QUESTION_LENGTH
+from agent007.models import MAX_QUESTION_LENGTH
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SRC_DIR = PROJECT_ROOT / "src"
@@ -140,7 +140,7 @@ def test_missing_argument_is_a_usage_error() -> None:
 
 
 def test_module_entry_point_runs_end_to_end() -> None:
-    """Prove `python -m atlas.main` actually works, not only main() in-process."""
+    """Prove `python -m agent007.main` actually works, not only main() in-process."""
     env = {
         key: value
         for key, value in os.environ.items()
@@ -149,7 +149,7 @@ def test_module_entry_point_runs_end_to_end() -> None:
     env["PYTHONPATH"] = os.pathsep.join(filter(None, [str(SRC_DIR), env.get("PYTHONPATH", "")]))
 
     result = subprocess.run(
-        [sys.executable, "-m", "atlas.main", "What is a bounded agent loop?"],
+        [sys.executable, "-m", "agent007.main", "What is a bounded agent loop?"],
         capture_output=True,
         text=True,
         cwd=PROJECT_ROOT,

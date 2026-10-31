@@ -12,12 +12,12 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
-from atlas.agent import ResearchAgent
-from atlas.config import Settings
-from atlas.models import ResearchState, SearchResult
-from atlas.report import Report, build_report_from_state
-from atlas.sources import SourceRegistry
-from atlas.tools.registry import ToolRegistry, build_default_registry
+from agent007.agent import ResearchAgent
+from agent007.config import Settings
+from agent007.models import ResearchState, SearchResult
+from agent007.report import Report, build_report_from_state
+from agent007.sources import SourceRegistry
+from agent007.tools.registry import ToolRegistry, build_default_registry
 
 
 @dataclass(frozen=True)
@@ -82,7 +82,7 @@ def _registry_with_registration(
     The default registry knows how to call providers; this layer adds source
     registration, which is what makes citations traceable (US-203, US-402).
     """
-    from atlas.tools.registry import FetchArgs, SearchArgs
+    from agent007.tools.registry import FetchArgs, SearchArgs
 
     enriched = ToolRegistry()
 

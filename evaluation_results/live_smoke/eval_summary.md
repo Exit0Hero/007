@@ -78,7 +78,7 @@
 1. Open the generated report for a case and its `## Sources` list.
 2. For each rubric criterion of that case (see the dataset), decide `pass`, `fail`, or `needs_review`.
 3. Record judgments in a reviews file: `{"reviews": [{"case_id": "EV-GEN-001", "factual_accuracy": "pass", "completeness_relevance": "pass", "reviewer": "name", "reviewed_at": "YYYY-MM-DD"}]}`.
-4. Re-run `python -m atlas.evalrun summarize --results <results.json> --reviews <reviews.json>` to recompute metrics.
+4. Re-run `python -m agent007.evalrun summarize --results <results.json> --reviews <reviews.json>` to recompute metrics.
 
 Fields left out of a review stay `needs_review`; metrics only count cases that were actually reviewed. Nothing here becomes `pass` without a recorded judgment.
 

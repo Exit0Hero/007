@@ -6,8 +6,8 @@ must bound its output.
 
 from __future__ import annotations
 
-from atlas.errors import FetchError
-from atlas.tools.fetch import MAX_TEXT_CHARS, extract_readable
+from agent007.errors import FetchError
+from agent007.tools.fetch import MAX_TEXT_CHARS, extract_readable
 
 
 def test_title_and_text_are_extracted() -> None:

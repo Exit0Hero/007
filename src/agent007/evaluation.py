@@ -23,10 +23,10 @@ from __future__ import annotations
 import itertools
 from dataclasses import dataclass, field
 
-from atlas.config import Settings
-from atlas.models import SearchResult, ToolCall
-from atlas.pipeline import ResearchOutcome, run_research
-from atlas.report import Report
+from agent007.config import Settings
+from agent007.models import SearchResult, ToolCall
+from agent007.pipeline import ResearchOutcome, run_research
+from agent007.report import Report
 
 
 @dataclass(frozen=True)
@@ -212,7 +212,7 @@ def benchmark_fixtures() -> list[tuple[str, object, object]]:
     2. a run where the search provider fails and the model must cope;
     3. a run where the model over-calls tools until the iteration bound hits.
     """
-    from atlas.model import FakeModelAdapter, ModelTurn
+    from agent007.model import FakeModelAdapter, ModelTurn
 
     good_results = [
         SearchResult(
@@ -226,9 +226,9 @@ def benchmark_fixtures() -> list[tuple[str, object, object]]:
             snippet="Bounded loops stop on iteration limits.",
         ),
     ]
-    table = {"atlas": good_results, "agent": good_results}
+    table = {"007": good_results, "agent": good_results}
 
-    from atlas.errors import SearchProviderError
+    from agent007.errors import SearchProviderError
 
     class FailingSearch:
         def search(self, query: str, max_results: int | None = None) -> list[SearchResult]:

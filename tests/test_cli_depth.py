@@ -15,12 +15,12 @@ import io
 
 import pytest
 
-from atlas.config import Settings
-from atlas.main import EXIT_CONFIGURATION_ERROR, EXIT_OK, EXIT_USAGE, main
-from atlas.models import ResearchState, TerminationReason
-from atlas.pipeline import ResearchOutcome
-from atlas.report import Report
-from atlas.sources import SourceRegistry
+from agent007.config import Settings
+from agent007.main import EXIT_CONFIGURATION_ERROR, EXIT_OK, EXIT_USAGE, main
+from agent007.models import ResearchState, TerminationReason
+from agent007.pipeline import ResearchOutcome
+from agent007.report import Report
+from agent007.sources import SourceRegistry
 
 LIVE_ENV = {
     "ATLAS_MODE": "live",

@@ -10,9 +10,9 @@ from typing import Any
 
 import pytest
 
-from atlas.errors import SearchProviderError, ToolValidationError
-from atlas.models import MAX_QUERY_LENGTH, MAX_SNIPPET_CHARS, SearchResult
-from atlas.tools.search import MAX_RESULTS_PER_CALL, TavilySearchProvider
+from agent007.errors import SearchProviderError, ToolValidationError
+from agent007.models import MAX_QUERY_LENGTH, MAX_SNIPPET_CHARS, SearchResult
+from agent007.tools.search import MAX_RESULTS_PER_CALL, TavilySearchProvider
 
 API_KEY = "tvly-secret-key-must-not-leak"
 

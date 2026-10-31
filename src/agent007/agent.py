@@ -19,9 +19,9 @@ import time
 from collections.abc import Callable, Sequence
 from typing import Any
 
-from atlas.errors import ModelProviderError
-from atlas.model import ModelAdapter, ModelTurn
-from atlas.models import ResearchState, TerminationReason, ToolCall, ToolObservation
+from agent007.errors import ModelProviderError
+from agent007.model import ModelAdapter, ModelTurn
+from agent007.models import ResearchState, TerminationReason, ToolCall, ToolObservation
 
 #: Hook type invoked after each executed (or refused) tool call.
 ObservationHook = Callable[[ToolObservation], None]
@@ -73,8 +73,18 @@ class ResearchAgent:
 
             state.iterations = iteration
 
+            effective_question = question
+            # Fix A: budget-aware prompt on the final turn(s)
+            remaining = self._max_iterations - iteration
+            if remaining <= 1:
+                effective_question = (
+                    question
+                    + "\n\nBUDGET: You have very few turns left. If you have enough evidence to answer, "
+                    + "answer now with no further tool calls. Do not make speculative searches."
+                )
+
             try:
-                turn = self._model.complete(question, state.observations, self._registry.specs())
+                turn = self._model.complete(effective_question, state.observations, self._registry.specs())
             except ModelProviderError as exc:
                 state.errors.append(str(exc))
                 state.finish(TerminationReason.MODEL_ERROR)

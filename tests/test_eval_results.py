@@ -13,9 +13,9 @@ from typing import Any
 import pytest
 from pydantic import ValidationError
 
-from atlas.errors import DatasetError
-from atlas.evalmetrics import compute_metrics
-from atlas.evalreport import (
+from agent007.errors import DatasetError
+from agent007.evalmetrics import compute_metrics
+from agent007.evalreport import (
     CaseResult,
     EvalRun,
     ReviewRecord,
@@ -215,7 +215,7 @@ def test_secrets_are_redacted_from_recorded_text() -> None:
 
 
 def test_provider_failure_result_marks_failure_not_quality() -> None:
-    from atlas.evalset import load_dataset
+    from agent007.evalset import load_dataset
 
     case = load_dataset().select(["EV-GEN-001"])[0]
     secret = "sk-test-abcdef"

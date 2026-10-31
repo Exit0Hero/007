@@ -11,11 +11,11 @@ import json
 import pytest
 from pydantic import BaseModel, ConfigDict, Field
 
-from atlas.agent import ResearchAgent
-from atlas.errors import ModelProviderError
-from atlas.model import FakeModelAdapter, ModelTurn, TokenUsage
-from atlas.models import TerminationReason, ToolCall
-from atlas.tools.registry import MAX_IDENTICAL_CALLS, ToolRegistry
+from agent007.agent import ResearchAgent
+from agent007.errors import ModelProviderError
+from agent007.model import FakeModelAdapter, ModelTurn, TokenUsage
+from agent007.models import TerminationReason, ToolCall
+from agent007.tools.registry import MAX_IDENTICAL_CALLS, ToolRegistry
 
 
 class SearchArgs(BaseModel):
@@ -70,7 +70,7 @@ def run(
 
 def test_single_tool_call_then_final_answer() -> None:
     state, model, registry = run(
-        ModelTurn(tool_calls=(tool_call(query="atlas"),)),
+        ModelTurn(tool_calls=(tool_call(query="007"),)),
         ModelTurn(text="Atlas is a research assistant."),
     )
 
@@ -81,19 +81,19 @@ def test_single_tool_call_then_final_answer() -> None:
     assert state.model_calls == 2
     assert len(state.observations) == 1
     assert state.observations[0].ok is True
-    assert registry.executed == ["atlas"]
+    assert registry.executed == ["007"]
 
 
 def test_observations_are_replayed_to_later_model_calls() -> None:
     """The model must see prior observations — statelessness is explicit."""
     _, model, _ = run(
-        ModelTurn(tool_calls=(tool_call(query="atlas"),)),
+        ModelTurn(tool_calls=(tool_call(query="007"),)),
         ModelTurn(text="done"),
     )
 
     second_call = model.calls[1]
     assert len(second_call["observations"]) == 1
-    assert second_call["observations"][0].output == "results for atlas"
+    assert second_call["observations"][0].output == "results for 007"
 
 
 def test_later_action_depends_on_earlier_observation() -> None:
@@ -104,12 +104,12 @@ def test_later_action_depends_on_earlier_observation() -> None:
         return ModelTurn(tool_calls=(tool_call(query=last.upper()),))
 
     state, _, registry = run(
-        ModelTurn(tool_calls=(tool_call(query="atlas"),)),
+        ModelTurn(tool_calls=(tool_call(query="007"),)),
         follow_up,
         ModelTurn(text="final"),
     )
 
-    assert registry.executed == ["atlas", "RESULTS FOR ATLAS"]
+    assert registry.executed == ["007", "RESULTS FOR 007"]
     assert state.status == "completed"
 
 
@@ -270,7 +270,7 @@ def test_model_error_on_first_turn_is_a_failed_run() -> None:
 
 def test_failed_tool_then_answer_is_not_labelled_cleanly() -> None:
     def failing_handler(args: SearchArgs) -> str:
-        from atlas.errors import SearchProviderError
+        from agent007.errors import SearchProviderError
 
         raise SearchProviderError("quota exceeded")
 
@@ -336,3 +336,33 @@ def test_fake_model_exhaustion_is_a_provider_error_not_a_crash() -> None:
 
     assert state.termination_reason == TerminationReason.MODEL_ERROR
     assert state.status == "failed"
+
+
+def test_budget_aware_prompt_on_last_turn() -> None:
+    """Fix A: when near iteration budget, inject budget-aware instructions."""
+    registry = CountingRegistry()
+    model = FakeModelAdapter(
+        ModelTurn(tool_calls=(tool_call(query="007"),)),
+        ModelTurn(text="answer"),
+    )
+    agent = ResearchAgent(model, registry, max_iterations=2)
+    state = agent.run("What is 007?")
+    assert state.status == "completed"
+    # On the last iteration (iteration==2, remaining==0), we inject budget note
+    second_call = model.calls[1]
+    assert "BUDGET" in second_call["question"]
+
+
+def test_budget_aware_prompt_not_on_early_turns() -> None:
+    """Fix A: budget note only injected near end of iterations."""
+    registry = CountingRegistry()
+    model = FakeModelAdapter(
+        ModelTurn(tool_calls=(tool_call(query="007"),)),
+        ModelTurn(tool_calls=(tool_call(query="second"),)),
+        ModelTurn(text="answer"),
+    )
+    agent = ResearchAgent(model, registry, max_iterations=8)
+    state = agent.run("Question")
+    assert state.status == "completed"
+    # First call should not have budget note
+    assert "BUDGET" not in model.calls[0]["question"]

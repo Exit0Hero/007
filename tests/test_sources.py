@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from atlas.errors import ToolValidationError
-from atlas.sources import (
+from agent007.errors import ToolValidationError
+from agent007.sources import (
     MAX_STORED_PAGE_CHARS,
     MAX_STORED_SNIPPET_CHARS,
     SourceRegistry,

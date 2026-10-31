@@ -14,8 +14,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 import pytest
 
-from atlas.errors import FetchError
-from atlas.tools.fetch import Destination, RequestsTransport
+from agent007.errors import FetchError
+from agent007.tools.fetch import Destination, RequestsTransport
 
 HOSTNAME = "unit-test.invalid"
 
@@ -136,7 +136,7 @@ def test_transport_sets_identifying_user_agent(local_server: tuple[str, int]) ->
     transport.get(destination_for(local_server), timeout=10.0, max_bytes=100_000)
 
     assert RECORDER.user_agents[0] is not None
-    assert "atlas" in RECORDER.user_agents[0]
+    assert "007" in RECORDER.user_agents[0]
 
 
 def test_transport_returns_status_codes_verbatim(local_server: tuple[str, int]) -> None:

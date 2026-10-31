@@ -12,8 +12,8 @@ import inspect
 
 import pytest
 
-from atlas.errors import SearchProviderError
-from atlas.tools.search import _ERROR_CATEGORIES, TavilySearchProvider
+from agent007.errors import SearchProviderError
+from agent007.tools.search import _ERROR_CATEGORIES, TavilySearchProvider
 
 tavily_errors = pytest.importorskip("tavily.errors")
 

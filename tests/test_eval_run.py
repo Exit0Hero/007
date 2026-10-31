@@ -13,8 +13,8 @@ from pathlib import Path
 import dotenv
 import pytest
 
-from atlas.evalrun import main, select_cases, smoke_subset
-from atlas.evalset import load_dataset
+from agent007.evalrun import main, select_cases, smoke_subset
+from agent007.evalset import load_dataset
 
 
 @pytest.fixture()
@@ -227,9 +227,9 @@ def test_live_run_refuses_without_configuration(
 def test_live_refusal_happens_before_any_provider_is_built(
     no_env_credentials: None, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from atlas.config import Settings
-    from atlas.errors import ConfigurationError
-    from atlas.evallive import require_live_opt_in
+    from agent007.config import Settings
+    from agent007.errors import ConfigurationError
+    from agent007.evallive import require_live_opt_in
 
     settings = Settings.from_env({})
     with pytest.raises(ConfigurationError, match="opt-in"):
@@ -238,6 +238,6 @@ def test_live_refusal_happens_before_any_provider_is_built(
     def explode(*args: object, **kwargs: object) -> None:
         raise AssertionError("a provider must not be constructed during a refusal")
 
-    monkeypatch.setattr("atlas.main._build_search_provider", explode, raising=False)
+    monkeypatch.setattr("agent007.main._build_search_provider", explode, raising=False)
     with pytest.raises(ConfigurationError, match="opt-in"):
         require_live_opt_in(settings, opt_in=False)

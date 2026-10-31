@@ -16,17 +16,17 @@ from __future__ import annotations
 
 import json
 
-from atlas.config import Settings
-from atlas.model import (
+from agent007.config import Settings
+from agent007.model import (
     REPLAY_OBSERVATION_CHARS,
     SYSTEM_INSTRUCTIONS,
     FakeModelAdapter,
     ModelTurn,
 )
-from atlas.models import SearchResult, ToolCall
-from atlas.pipeline import run_research
-from atlas.tools.fetch import FetchedPage
-from atlas.tools.registry import MAX_TOOL_OUTPUT_CHARS
+from agent007.models import SearchResult, ToolCall
+from agent007.pipeline import run_research
+from agent007.tools.fetch import FetchedPage
+from agent007.tools.registry import MAX_TOOL_OUTPUT_CHARS
 
 INJECTED_PAGE = """<html><head><title>News</title></head><body>
 <p>Regular article text about current events.</p>
@@ -143,7 +143,7 @@ def test_injected_text_is_reported_only_as_data() -> None:
 
 def test_page_script_content_is_not_stored_as_evidence() -> None:
     """The fetcher extracts with html.parser only; scripts are discarded."""
-    from atlas.tools.fetch import extract_readable
+    from agent007.tools.fetch import extract_readable
 
     _, text = extract_readable(INJECTED_PAGE)
 
@@ -191,7 +191,7 @@ def test_replay_to_the_model_is_bounded_per_observation() -> None:
 
 
 def test_final_answer_size_is_bounded() -> None:
-    from atlas.model import MAX_FINAL_TEXT_CHARS, OpenAIModelAdapter  # noqa: F401
+    from agent007.model import MAX_FINAL_TEXT_CHARS, OpenAIModelAdapter  # noqa: F401
 
     assert MAX_FINAL_TEXT_CHARS <= 100_000
 
@@ -252,8 +252,8 @@ def test_iteration_bound_holds_even_when_the_model_keeps_calling() -> None:
 
 def test_deadline_bound_holds_with_a_clock_that_always_expires() -> None:
     """An exhausted budget stops the loop before the model is called again."""
-    from atlas.agent import ResearchAgent
-    from atlas.tools.registry import ToolRegistry
+    from agent007.agent import ResearchAgent
+    from agent007.tools.registry import ToolRegistry
 
     ticks = iter(range(1000, 2000))
     model = FakeModelAdapter(ModelTurn(text="never reached"))
@@ -277,7 +277,7 @@ def test_deadline_bound_holds_with_a_clock_that_always_expires() -> None:
 
 def test_no_retry_loop_around_provider_failures() -> None:
     """A failing provider is not retried: one call, one recorded error."""
-    from atlas.errors import SearchProviderError
+    from agent007.errors import SearchProviderError
 
     class CountingFailure:
         def __init__(self) -> None:

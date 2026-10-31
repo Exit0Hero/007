@@ -47,8 +47,8 @@ require `pip install -e ".[dev]"`; that has not been performed.
 ### Run the CLI
 
 ```bash
-PYTHONPATH=src python -m atlas.main "What is retrieval-augmented generation?"
-PYTHONPATH=src python -m atlas.main "..." --output report.md
+PYTHONPATH=src python -m agent007.main "What is retrieval-augmented generation?"
+PYTHONPATH=src python -m agent007.main "..." --output report.md
 ```
 
 `src` must be on the path because the package has not been installed editable.
@@ -65,7 +65,7 @@ unavailable).
 ### Research depth (per-run overrides)
 
 ```bash
-PYTHONPATH=src python -m atlas.main "..." --max-iterations 3 --max-results 2 --deadline 30
+PYTHONPATH=src python -m agent007.main "..." --max-iterations 3 --max-results 2 --deadline 30
 ```
 
 Each flag overrides the environment configuration for that run only and is
@@ -88,15 +88,15 @@ Exit codes:
 
 ```bash
 # Offline: no credentials, no network, deterministic
-PYTHONPATH=src python -m atlas.evalrun run                 # all 24 cases
-PYTHONPATH=src python -m atlas.evalrun run --smoke         # three-case subset
-PYTHONPATH=src python -m atlas.evalrun list                # case IDs and categories
+PYTHONPATH=src python -m agent007.evalrun run                 # all 24 cases
+PYTHONPATH=src python -m agent007.evalrun run --smoke         # three-case subset
+PYTHONPATH=src python -m agent007.evalrun list                # case IDs and categories
 
 # Opt-in live: makes real API calls, single attempt per case, no retry
-PYTHONPATH=src python -m atlas.evalrun run --live --smoke
+PYTHONPATH=src python -m agent007.evalrun run --live --smoke
 
 # Re-score saved results after recording a human review
-PYTHONPATH=src python -m atlas.evalrun summarize --results <eval_results.json> --reviews <reviews.json>
+PYTHONPATH=src python -m agent007.evalrun summarize --results <eval_results.json> --reviews <reviews.json>
 ```
 
 Each run writes `eval_results.json` (machine-readable) and `eval_summary.md`

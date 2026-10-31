@@ -6,9 +6,9 @@ credentials (US-503). It measures the pipeline, not any real model.
 
 from __future__ import annotations
 
-from atlas.config import Settings
-from atlas.errors import SearchProviderError
-from atlas.evaluation import (
+from agent007.config import Settings
+from agent007.errors import SearchProviderError
+from agent007.evaluation import (
     BENCHMARK_CRITERIA,
     RunMetrics,
     benchmark_fixtures,
@@ -17,9 +17,9 @@ from atlas.evaluation import (
     run_benchmark,
     run_offline_benchmark,
 )
-from atlas.model import FakeModelAdapter, ModelTurn
-from atlas.models import SearchResult, TerminationReason
-from atlas.pipeline import run_research
+from agent007.model import FakeModelAdapter, ModelTurn
+from agent007.models import SearchResult, TerminationReason
+from agent007.pipeline import run_research
 
 
 def completed_metrics(**overrides: object) -> RunMetrics:
@@ -58,7 +58,7 @@ def test_completed_run_metrics_are_recorded() -> None:
 
 
 def test_token_usage_is_reported_only_when_actually_available() -> None:
-    from atlas.models import TokenUsage
+    from agent007.models import TokenUsage
 
     model = FakeModelAdapter(
         ModelTurn(
@@ -211,7 +211,7 @@ class _search_provider:
 def _tool_call(query: str):
     import json
 
-    from atlas.models import ToolCall
+    from agent007.models import ToolCall
 
     return ToolCall(
         call_id=f"c_{query}",
@@ -223,7 +223,7 @@ def _tool_call(query: str):
 
 def _model_search_then_answer() -> FakeModelAdapter:
     return FakeModelAdapter(
-        ModelTurn(tool_calls=(_tool_call("atlas"),)),
+        ModelTurn(tool_calls=(_tool_call("007"),)),
         ModelTurn(text="Atlas is a bounded single-agent research assistant."),
     )
 
@@ -255,7 +255,7 @@ def test_measure_counts_only_registered_sources() -> None:
 
 
 def test_termination_reason_enum_is_summarized_as_its_value() -> None:
-    from atlas.errors import ModelProviderError
+    from agent007.errors import ModelProviderError
 
     model = FakeModelAdapter(ModelProviderError("boom"))
 

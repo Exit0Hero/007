@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import pytest
 
-from atlas.errors import InvalidRequestError
-from atlas.models import MAX_QUESTION_LENGTH, ResearchRequest
+from agent007.errors import InvalidRequestError
+from agent007.models import MAX_QUESTION_LENGTH, ResearchRequest
 
 
 def test_normal_valid_question_is_accepted_and_trimmed() -> None:

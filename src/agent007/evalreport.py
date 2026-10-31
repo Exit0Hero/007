@@ -20,7 +20,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
-from atlas.errors import DatasetError
+from agent007.errors import DatasetError
 
 #: The only statuses an evaluation field may take.
 STATUS_VALUES: tuple[str, ...] = ("pass", "fail", "unknown", "needs_review")
@@ -157,8 +157,8 @@ def result_from_outcome(
     check statuses, and token usage identically (US-802 criterion 3: one set
     of business rules).
     """
-    from atlas.evaluation import measure
-    from atlas.quality import provider_failure, run_checks
+    from agent007.evaluation import measure
+    from agent007.quality import provider_failure, run_checks
 
     state = outcome.state
     metrics = measure(outcome)
@@ -393,7 +393,7 @@ class EvalRun(BaseModel):
                 '`{"reviews": [{"case_id": "EV-GEN-001", "factual_accuracy": "pass", '
                 '"completeness_relevance": "pass", "reviewer": "name", '
                 '"reviewed_at": "YYYY-MM-DD"}]}`.',
-                "4. Re-run `python -m atlas.evalrun summarize --results <results.json> "
+                "4. Re-run `python -m agent007.evalrun summarize --results <results.json> "
                 "--reviews <reviews.json>` to recompute metrics.",
                 "",
                 "Fields left out of a review stay `needs_review`; metrics only count "

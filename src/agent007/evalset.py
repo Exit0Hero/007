@@ -18,8 +18,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
-from atlas.errors import DatasetError
-from atlas.models import SearchResult, ToolCall
+from agent007.errors import DatasetError
+from agent007.models import SearchResult, ToolCall
 
 EvalCategory = Literal[
     "general_factual",
@@ -218,7 +218,7 @@ def load_dataset(path: Path | str | None = None) -> EvalDataset:
 
 def build_fixture_model(spec: FixtureSpec) -> Any:
     """Turn a case's scripted turns into a fake model adapter (offline, deterministic)."""
-    from atlas.model import FakeModelAdapter, ModelTurn
+    from agent007.model import FakeModelAdapter, ModelTurn
 
     turns: list[ModelTurn] = []
     for index, turn in enumerate(spec.turns, start=1):
@@ -251,7 +251,7 @@ def build_fixture_search(spec: FixtureSpec) -> Any:
     class _FixtureSearch:
         def search(self, query: str, max_results: int | None = None) -> list[SearchResult]:
             if error is not None:
-                from atlas.errors import SearchProviderError
+                from agent007.errors import SearchProviderError
 
                 raise SearchProviderError(error)
             return corpus[: max_results or 5]
